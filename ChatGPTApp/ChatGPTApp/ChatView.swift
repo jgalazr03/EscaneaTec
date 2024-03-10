@@ -18,7 +18,7 @@ struct ChatView: View {
                     Label {
                         Text("EscaneaTec")
                             .bold()
-                            //.font(.custom(" ", size: 20))
+                            //.font(.custom(" ", size: 20)) "Nombredelafuente"
                             .foregroundColor(.white)
                     }
                     icon: {

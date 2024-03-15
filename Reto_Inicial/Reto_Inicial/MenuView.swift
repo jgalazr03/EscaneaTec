@@ -55,7 +55,7 @@ struct MenuView: View {
                     
                     HStack{
                         
-                        NavigationLink(destination: LogInView()) {
+                        NavigationLink(destination: ChatView()) {
                             Text("ChatBot-GPT")
                                 .padding(.all)
                                 .background(Color(red: 234/255, green: 112/255, blue: 112/255))
@@ -66,7 +66,7 @@ struct MenuView: View {
                           }
                         .mask(Parallelogram(depth: 13))
                         
-                        NavigationLink(destination: LogInView()) {
+                        NavigationLink(destination: ModeloMLView()) {
                             Text("Subir Imagen")
                                 .padding(.all)
                                 .background(Color(red: 241/255, green: 245/255, blue: 118/255))

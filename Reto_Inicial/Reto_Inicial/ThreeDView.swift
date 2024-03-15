@@ -11,8 +11,8 @@ import RealityKitContent
 
 struct ThreeDView: View {
     var body: some View {
-        Model3D(named: "Pulmones", bundle: realityKitContentBundle)
-            .scaleEffect(0.1)
+        Model3D(named: "Realistic_Human_Lungs", bundle: realityKitContentBundle)
+            .scaleEffect(3.0)
     }
 }
 

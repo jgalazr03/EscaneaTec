@@ -16,7 +16,6 @@ struct Reto_InicialApp: App {
         
         WindowGroup(id: "quizz") {
             PreguntaView()
-            PreguntaView()
         }
         
         WindowGroup(id: "3D") {

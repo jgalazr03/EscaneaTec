@@ -38,7 +38,7 @@ struct LogInView: View {
                         .padding(.top, 10)
                         .frame(width: 400)
                     
-                    NavigationLink(destination: LearningView()) {
+                    NavigationLink(destination: MenuView()) {
                         Text("Login")
                             .padding(.all)
                             .background(Color(red: 31/255, green: 191/255, blue: 255/255))

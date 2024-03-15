@@ -2,10 +2,12 @@
 //  ContentView.swift
 //  ChatGPTApp
 //
-//  Created by Jesus Alonso Galaz Reyes on 09/03/24.
+//  Created by Jesus Alonso Galaz Reyes on 14/03/24.
 //
 
 import SwiftUI
+import RealityKit
+import RealityKitContent
 
 struct ChatView: View {
     @ObservedObject var viewModel = ViewModel()
@@ -18,14 +20,14 @@ struct ChatView: View {
                     Label {
                         Text("EscaneaTec")
                             .bold()
-                            //.font(.custom(" ", size: 20)) "Nombredelafuente"
                             .foregroundColor(.white)
-                    }
-                    icon: {
+                            .padding(.top, 20)
+                    } icon: {
                         Image("Logo")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 25, height: 25)
+                            .padding(.top, 20)
                     }
                 }
                 Spacer()
@@ -53,6 +55,8 @@ struct ChatView: View {
                 TextField("Enter a message...", text: $viewModel.currentInput)
                     .foregroundColor(.white)
                     .bold()
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal, 16) // Ajusta este valor según los márgenes que prefieras
                 Button(action: viewModel.sendMessage) {
                     Image(systemName: "paperplane.fill")
                         .resizable()
@@ -62,8 +66,12 @@ struct ChatView: View {
             }
             .padding(.horizontal)
         }
-        .padding(.top)
+        .padding(.bottom, 20)
         .background(Color.black)
+        .edgesIgnoringSafeArea(.bottom) // Extiende el fondo negro hasta el borde inferior
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            Color.clear.frame(height: 48) // Espacio adicional para el área de entrada de texto, ajusta según sea necesario
+        }
     }
 
     func messageView(message: Message) -> some View {
@@ -115,6 +123,7 @@ struct ChatView: View {
                         .cornerRadius(15)
                         .shadow(radius: 3)
                 }
+                .padding(.horizontal, 20)
                 Spacer()
             }
         }

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "200D39C72B9D6F7900B17B32"
-               BuildableName = "ChatGPTApp.app"
-               BlueprintName = "ChatGPTApp"
-               ReferencedContainer = "container:ChatGPTApp.xcodeproj">
+               BlueprintIdentifier = "BB575DF62B9106D300C4BCF8"
+               BuildableName = "Reto_Inicial.app"
+               BlueprintName = "Reto_Inicial"
+               ReferencedContainer = "container:Reto_Inicial.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,16 +43,16 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "200D39C72B9D6F7900B17B32"
-            BuildableName = "ChatGPTApp.app"
-            BlueprintName = "ChatGPTApp"
-            ReferencedContainer = "container:ChatGPTApp.xcodeproj">
+            BlueprintIdentifier = "BB575DF62B9106D300C4BCF8"
+            BuildableName = "Reto_Inicial.app"
+            BlueprintName = "Reto_Inicial"
+            ReferencedContainer = "container:Reto_Inicial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "OPENAI_API_KEY"
-            value = "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"
+            value = "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"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
@@ -67,10 +67,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "200D39C72B9D6F7900B17B32"
-            BuildableName = "ChatGPTApp.app"
-            BlueprintName = "ChatGPTApp"
-            ReferencedContainer = "container:ChatGPTApp.xcodeproj">
+            BlueprintIdentifier = "BB575DF62B9106D300C4BCF8"
+            BuildableName = "Reto_Inicial.app"
+            BlueprintName = "Reto_Inicial"
+            ReferencedContainer = "container:Reto_Inicial.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

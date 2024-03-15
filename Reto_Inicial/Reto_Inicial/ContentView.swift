@@ -34,7 +34,7 @@ struct ContentView: View {
                     NavigationLink{
                         LogInView()
                     }label:{
-                        Text("GET STARTED")
+                        Text("Get Started")
                             .padding(.all)
                             .background(Color(red: 31/255, green: 191/255, blue: 255/255))
                             .cornerRadius(30)

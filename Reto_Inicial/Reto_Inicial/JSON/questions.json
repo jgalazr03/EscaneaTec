@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "pregunta": "Pregunta 1",
+        "opciones": ["Opción 1", "Opción 2", "Opción 3"],
+        "respuesta": "Opción 2"
+    },
+    {
+        "id": 2,
+        "pregunta": "Pregunta 2",
+        "opciones": ["Opción 1", "Opción 2", "Opción 3"],
+        "respuesta": "Opción 1"
+    },
+    {
+        "id": 3,
+        "pregunta": "Pregunta 3",
+        "opciones": ["Opción 1", "Opción 2", "Opción 3"],
+        "respuesta": "Opción 2"
+    }
+]

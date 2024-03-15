@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ChatGPTApp.xcscheme_^#shared#^_</key>
+		<key>Reto_Inicial.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>200D39C72B9D6F7900B17B32</key>
+		<key>BB575DF62B9106D300C4BCF8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

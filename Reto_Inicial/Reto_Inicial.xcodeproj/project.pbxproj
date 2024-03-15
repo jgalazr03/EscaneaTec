@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20DA185A2BA41F71005A1D11 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 20DA18592BA41F71005A1D11 /* Alamofire */; };
+		20DA185C2BA41F71005A1D11 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 20DA185B2BA41F71005A1D11 /* AlamofireDynamic */; };
+		20DA18612BA420CB005A1D11 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18602BA420CB005A1D11 /* ChatViewModel.swift */; };
+		20DA18632BA420D3005A1D11 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18622BA420D3005A1D11 /* Constants.swift */; };
+		20DA18652BA420EB005A1D11 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18642BA420EB005A1D11 /* OpenAIService.swift */; };
+		20DA18672BA42190005A1D11 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18662BA42190005A1D11 /* ChatView.swift */; };
+		20DA18692BA421A9005A1D11 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 20DA18682BA421A9005A1D11 /* Logo.png */; };
 		BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30052E2B91702B003E5D35 /* LogInView.swift */; };
 		BB3005312B917280003E5D35 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005302B917280003E5D35 /* SignUpView.swift */; };
 		BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005322B9172A7003E5D35 /* MenuView.swift */; };
@@ -29,6 +36,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20DA18602BA420CB005A1D11 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = ../../../ChatGPTApp/ChatGPTApp/ChatViewModel.swift; sourceTree = "<group>"; };
+		20DA18622BA420D3005A1D11 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../ChatGPTApp/ChatGPTApp/Constants.swift; sourceTree = "<group>"; };
+		20DA18642BA420EB005A1D11 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenAIService.swift; path = ../../../ChatGPTApp/ChatGPTApp/OpenAIService.swift; sourceTree = "<group>"; };
+		20DA18662BA42190005A1D11 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		20DA18682BA421A9005A1D11 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		BB30052E2B91702B003E5D35 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		BB3005302B917280003E5D35 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		BB3005322B9172A7003E5D35 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -58,12 +70,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB575DFD2B9106D300C4BCF8 /* RealityKitContent in Frameworks */,
+				20DA185C2BA41F71005A1D11 /* AlamofireDynamic in Frameworks */,
+				20DA185A2BA41F71005A1D11 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20DA185D2BA41FFD005A1D11 /* ChatbotGPT */ = {
+			isa = PBXGroup;
+			children = (
+				20DA18642BA420EB005A1D11 /* OpenAIService.swift */,
+				20DA18622BA420D3005A1D11 /* Constants.swift */,
+				20DA18662BA42190005A1D11 /* ChatView.swift */,
+				20DA18602BA420CB005A1D11 /* ChatViewModel.swift */,
+			);
+			path = ChatbotGPT;
+			sourceTree = "<group>";
+		};
 		BB575DEE2B9106D300C4BCF8 = {
 			isa = PBXGroup;
 			children = (
@@ -96,9 +121,11 @@
 				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
 				BB575E132B91087000C4BCF8 /* Pregunta.swift */,
 				BB575E162B910C5B00C4BCF8 /* Interactor.swift */,
+				20DA185D2BA41FFD005A1D11 /* ChatbotGPT */,
 				BB575E152B910BF600C4BCF8 /* JSON */,
 				BB575E042B9106D300C4BCF8 /* ImageBasedLighting.skybox */,
 				BB575E062B9106D400C4BCF8 /* Assets.xcassets */,
+				20DA18682BA421A9005A1D11 /* Logo.png */,
 				BB575E0B2B9106D400C4BCF8 /* Info.plist */,
 				BB575E082B9106D400C4BCF8 /* Preview Content */,
 			);
@@ -157,6 +184,8 @@
 			name = Reto_Inicial;
 			packageProductDependencies = (
 				BB575DFC2B9106D300C4BCF8 /* RealityKitContent */,
+				20DA18592BA41F71005A1D11 /* Alamofire */,
+				20DA185B2BA41F71005A1D11 /* AlamofireDynamic */,
 			);
 			productName = Reto_Inicial;
 			productReference = BB575DF72B9106D300C4BCF8 /* Reto_Inicial.app */;
@@ -186,6 +215,9 @@
 				Base,
 			);
 			mainGroup = BB575DEE2B9106D300C4BCF8;
+			packageReferences = (
+				20DA18582BA41F71005A1D11 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = BB575DF82B9106D300C4BCF8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -204,6 +236,7 @@
 				BB575E072B9106D400C4BCF8 /* Assets.xcassets in Resources */,
 				BB575E122B91085500C4BCF8 /* questions.json in Resources */,
 				BBBF0F722BA3E25900954478 /* Pridi-Light.ttf in Resources */,
+				20DA18692BA421A9005A1D11 /* Logo.png in Resources */,
 				BBBF0F702BA3E24C00954478 /* Pridi-Medium.ttf in Resources */,
 				BB575E0A2B9106D400C4BCF8 /* Preview Assets.xcassets in Resources */,
 				BB575E052B9106D300C4BCF8 /* ImageBasedLighting.skybox in Resources */,
@@ -217,15 +250,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DA18612BA420CB005A1D11 /* ChatViewModel.swift in Sources */,
 				BB3005352B917D0F003E5D35 /* PreguntaView.swift in Sources */,
+				20DA18652BA420EB005A1D11 /* OpenAIService.swift in Sources */,
 				BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */,
 				BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */,
 				BB575E012B9106D300C4BCF8 /* ContentView.swift in Sources */,
 				BB575DFF2B9106D300C4BCF8 /* Reto_InicialApp.swift in Sources */,
+				20DA18672BA42190005A1D11 /* ChatView.swift in Sources */,
 				BB3005312B917280003E5D35 /* SignUpView.swift in Sources */,
 				BB575E172B910C5B00C4BCF8 /* Interactor.swift in Sources */,
 				BBBF0F762BA4140000954478 /* StudyView.swift in Sources */,
 				BB575E032B9106D300C4BCF8 /* ImmersiveView.swift in Sources */,
+				20DA18632BA420D3005A1D11 /* Constants.swift in Sources */,
 				BB3005372B91C8F0003E5D35 /* ThreeDView.swift in Sources */,
 				BB575E142B91087000C4BCF8 /* Pregunta.swift in Sources */,
 			);
@@ -426,7 +463,28 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		20DA18582BA41F71005A1D11 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		20DA18592BA41F71005A1D11 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20DA18582BA41F71005A1D11 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		20DA185B2BA41F71005A1D11 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20DA18582BA41F71005A1D11 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
 		BB575DFC2B9106D300C4BCF8 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;

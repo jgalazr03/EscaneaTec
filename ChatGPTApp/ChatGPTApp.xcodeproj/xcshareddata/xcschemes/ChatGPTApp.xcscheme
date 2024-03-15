@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "200D39C72B9D6F7900B17B32"
+               BlueprintIdentifier = "20DA18072BA4068C005A1D11"
                BuildableName = "ChatGPTApp.app"
                BlueprintName = "ChatGPTApp"
                ReferencedContainer = "container:ChatGPTApp.xcodeproj">
@@ -43,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "200D39C72B9D6F7900B17B32"
+            BlueprintIdentifier = "20DA18072BA4068C005A1D11"
             BuildableName = "ChatGPTApp.app"
             BlueprintName = "ChatGPTApp"
             ReferencedContainer = "container:ChatGPTApp.xcodeproj">
@@ -52,7 +52,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "OPENAI_API_KEY"
-            value = "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"
+            value = "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"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
@@ -67,7 +67,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "200D39C72B9D6F7900B17B32"
+            BlueprintIdentifier = "20DA18072BA4068C005A1D11"
             BuildableName = "ChatGPTApp.app"
             BlueprintName = "ChatGPTApp"
             ReferencedContainer = "container:ChatGPTApp.xcodeproj">

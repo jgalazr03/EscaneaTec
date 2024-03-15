@@ -2,7 +2,7 @@
 //  ChatGPTAppApp.swift
 //  ChatGPTApp
 //
-//  Created by Jesus Alonso Galaz Reyes on 09/03/24.
+//  Created by Jesus Alonso Galaz Reyes on 14/03/24.
 //
 
 import SwiftUI
@@ -13,5 +13,9 @@ struct ChatGPTAppApp: App {
         WindowGroup {
             ChatView()
         }
+
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveView()
+        }.immersionStyle(selection: .constant(.full), in: .full)
     }
 }

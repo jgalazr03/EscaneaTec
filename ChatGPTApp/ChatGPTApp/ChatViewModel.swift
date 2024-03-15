@@ -2,7 +2,7 @@
 //  ChatViewModel.swift
 //  ChatGPTApp
 //
-//  Created by Jesus Alonso Galaz Reyes on 09/03/24.
+//  Created by Jesus Alonso Galaz Reyes on 14/03/24.
 //
 
 import Foundation
@@ -49,3 +49,4 @@ struct Message : Decodable {
     let content : String
     let createAt : Date
 }
+

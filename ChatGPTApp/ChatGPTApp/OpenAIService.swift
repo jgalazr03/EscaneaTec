@@ -2,7 +2,7 @@
 //  OpenAIService.swift
 //  ChatGPTApp
 //
-//  Created by Jesus Alonso Galaz Reyes on 09/03/24.
+//  Created by Jesus Alonso Galaz Reyes on 14/03/24.
 //
 
 import Foundation
@@ -44,5 +44,3 @@ struct OpenAIChatResponse: Decodable {
 struct OpenAIChatChoice: Decodable {
     let message: OpenAIChatMessage
 }
-
-

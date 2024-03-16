@@ -29,9 +29,6 @@
 		BB575E032B9106D300C4BCF8 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */; };
 		BB575E052B9106D300C4BCF8 /* ImageBasedLighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = BB575E042B9106D300C4BCF8 /* ImageBasedLighting.skybox */; };
 		BB575E0A2B9106D400C4BCF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB575E092B9106D400C4BCF8 /* Preview Assets.xcassets */; };
-		BB575E122B91085500C4BCF8 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = BB575E112B91085500C4BCF8 /* questions.json */; };
-		BB575E142B91087000C4BCF8 /* Pregunta.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB575E132B91087000C4BCF8 /* Pregunta.swift */; };
-		BB575E172B910C5B00C4BCF8 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB575E162B910C5B00C4BCF8 /* Interactor.swift */; };
 		BBBF0F702BA3E24C00954478 /* Pridi-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBF0F6F2BA3E24C00954478 /* Pridi-Medium.ttf */; };
 		BBBF0F722BA3E25900954478 /* Pridi-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBF0F712BA3E25900954478 /* Pridi-Light.ttf */; };
 		BBBF0F742BA3F30400954478 /* Philosopher-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBF0F732BA3F30400954478 /* Philosopher-Bold.ttf */; };
@@ -61,9 +58,6 @@
 		BB575E042B9106D300C4BCF8 /* ImageBasedLighting.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = ImageBasedLighting.skybox; sourceTree = "<group>"; };
 		BB575E092B9106D400C4BCF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BB575E0B2B9106D400C4BCF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB575E112B91085500C4BCF8 /* questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
-		BB575E132B91087000C4BCF8 /* Pregunta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pregunta.swift; sourceTree = "<group>"; };
-		BB575E162B910C5B00C4BCF8 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		BBBF0F6F2BA3E24C00954478 /* Pridi-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pridi-Medium.ttf"; sourceTree = "<group>"; };
 		BBBF0F712BA3E25900954478 /* Pridi-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pridi-Light.ttf"; sourceTree = "<group>"; };
 		BBBF0F732BA3F30400954478 /* Philosopher-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Philosopher-Bold.ttf"; sourceTree = "<group>"; };
@@ -98,8 +92,27 @@
 		20DA18812BA43008005A1D11 /* ModeloML */ = {
 			isa = PBXGroup;
 			children = (
+				20DA18862BA43071005A1D11 /* UIImage+Extensions.swift */,
+				20DA18822BA43059005A1D11 /* iMikers_RayosX.mlmodel */,
+				20DA18842BA43060005A1D11 /* ImagePicker.swift */,
 			);
 			path = ModeloML;
+			sourceTree = "<group>";
+		};
+		20DA188A2BA56904005A1D11 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB575E002B9106D300C4BCF8 /* ContentView.swift */,
+				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
+				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
+				BB3005302B917280003E5D35 /* SignUpView.swift */,
+				BB3005322B9172A7003E5D35 /* MenuView.swift */,
+				BB30052E2B91702B003E5D35 /* LogInView.swift */,
+				BBBF0F752BA4140000954478 /* StudyView.swift */,
+				BB3005362B91C8F0003E5D35 /* ThreeDView.swift */,
+				BB3005342B917D0F003E5D35 /* PreguntaView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BB575DEE2B9106D300C4BCF8 = {
@@ -124,23 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				BB575DFE2B9106D300C4BCF8 /* Reto_InicialApp.swift */,
-				BBBF0F752BA4140000954478 /* StudyView.swift */,
-				BB3005362B91C8F0003E5D35 /* ThreeDView.swift */,
-				BB3005342B917D0F003E5D35 /* PreguntaView.swift */,
-				BB575E002B9106D300C4BCF8 /* ContentView.swift */,
-				BB30052E2B91702B003E5D35 /* LogInView.swift */,
-				BB3005322B9172A7003E5D35 /* MenuView.swift */,
-				BB3005302B917280003E5D35 /* SignUpView.swift */,
-				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
+				20DA188A2BA56904005A1D11 /* Views */,
 				20DA186F2BA42E88005A1D11 /* ChatBotGPT */,
-				BB575E132B91087000C4BCF8 /* Pregunta.swift */,
-				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
-				20DA18862BA43071005A1D11 /* UIImage+Extensions.swift */,
-				20DA18822BA43059005A1D11 /* iMikers_RayosX.mlmodel */,
-				20DA18842BA43060005A1D11 /* ImagePicker.swift */,
 				20DA18812BA43008005A1D11 /* ModeloML */,
-				BB575E162B910C5B00C4BCF8 /* Interactor.swift */,
-				BB575E152B910BF600C4BCF8 /* JSON */,
 				BB575E042B9106D300C4BCF8 /* ImageBasedLighting.skybox */,
 				20DA187A2BA42F5A005A1D11 /* Assets.xcassets */,
 				BB575E0B2B9106D400C4BCF8 /* Info.plist */,
@@ -163,14 +162,6 @@
 				BB575E092B9106D400C4BCF8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		BB575E152B910BF600C4BCF8 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				BB575E112B91085500C4BCF8 /* questions.json */,
-			);
-			path = JSON;
 			sourceTree = "<group>";
 		};
 		BBBF0F6E2BA3E21800954478 /* Fonts */ = {
@@ -250,7 +241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBBF0F742BA3F30400954478 /* Philosopher-Bold.ttf in Resources */,
-				BB575E122B91085500C4BCF8 /* questions.json in Resources */,
 				BBBF0F722BA3E25900954478 /* Pridi-Light.ttf in Resources */,
 				BBBF0F702BA3E24C00954478 /* Pridi-Medium.ttf in Resources */,
 				BB575E0A2B9106D400C4BCF8 /* Preview Assets.xcassets in Resources */,
@@ -278,12 +268,10 @@
 				20DA18832BA43059005A1D11 /* iMikers_RayosX.mlmodel in Sources */,
 				BB575DFF2B9106D300C4BCF8 /* Reto_InicialApp.swift in Sources */,
 				BB3005312B917280003E5D35 /* SignUpView.swift in Sources */,
-				BB575E172B910C5B00C4BCF8 /* Interactor.swift in Sources */,
 				BBBF0F762BA4140000954478 /* StudyView.swift in Sources */,
 				BB575E032B9106D300C4BCF8 /* ImmersiveView.swift in Sources */,
 				BB3005372B91C8F0003E5D35 /* ThreeDView.swift in Sources */,
 				20DA18872BA43071005A1D11 /* UIImage+Extensions.swift in Sources */,
-				BB575E142B91087000C4BCF8 /* Pregunta.swift in Sources */,
 				20DA18712BA42EA0005A1D11 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

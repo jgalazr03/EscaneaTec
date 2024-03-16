@@ -17,7 +17,7 @@
 		20DA18832BA43059005A1D11 /* iMikers_RayosX.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18822BA43059005A1D11 /* iMikers_RayosX.mlmodel */; };
 		20DA18852BA43060005A1D11 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18842BA43060005A1D11 /* ImagePicker.swift */; };
 		20DA18872BA43071005A1D11 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18862BA43071005A1D11 /* UIImage+Extensions.swift */; };
-		20DA18892BA4308C005A1D11 /* ModeloMLViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18882BA4308C005A1D11 /* ModeloMLViewView.swift */; };
+		20DA18892BA4308C005A1D11 /* ModeloMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18882BA4308C005A1D11 /* ModeloMLView.swift */; };
 		BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30052E2B91702B003E5D35 /* LogInView.swift */; };
 		BB3005312B917280003E5D35 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005302B917280003E5D35 /* SignUpView.swift */; };
 		BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005322B9172A7003E5D35 /* MenuView.swift */; };
@@ -47,7 +47,7 @@
 		20DA18822BA43059005A1D11 /* iMikers_RayosX.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = iMikers_RayosX.mlmodel; sourceTree = "<group>"; };
 		20DA18842BA43060005A1D11 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		20DA18862BA43071005A1D11 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		20DA18882BA4308C005A1D11 /* ModeloMLViewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeloMLViewView.swift; sourceTree = "<group>"; };
+		20DA18882BA4308C005A1D11 /* ModeloMLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeloMLView.swift; sourceTree = "<group>"; };
 		BB30052E2B91702B003E5D35 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		BB3005302B917280003E5D35 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		BB3005322B9172A7003E5D35 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
 				20DA186F2BA42E88005A1D11 /* ChatBotGPT */,
 				BB575E132B91087000C4BCF8 /* Pregunta.swift */,
-				20DA18882BA4308C005A1D11 /* ModeloMLViewView.swift */,
+				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
 				20DA18862BA43071005A1D11 /* UIImage+Extensions.swift */,
 				20DA18822BA43059005A1D11 /* iMikers_RayosX.mlmodel */,
 				20DA18842BA43060005A1D11 /* ImagePicker.swift */,
@@ -274,7 +274,7 @@
 				BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */,
 				20DA18752BA42EB7005A1D11 /* ChatView.swift in Sources */,
 				BB575E012B9106D300C4BCF8 /* ContentView.swift in Sources */,
-				20DA18892BA4308C005A1D11 /* ModeloMLViewView.swift in Sources */,
+				20DA18892BA4308C005A1D11 /* ModeloMLView.swift in Sources */,
 				20DA18832BA43059005A1D11 /* iMikers_RayosX.mlmodel in Sources */,
 				BB575DFF2B9106D300C4BCF8 /* Reto_InicialApp.swift in Sources */,
 				BB3005312B917280003E5D35 /* SignUpView.swift in Sources */,

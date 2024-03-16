@@ -53,7 +53,7 @@
          <EnvironmentVariable
             key = ""
             value = ""
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
    </LaunchAction>

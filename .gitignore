@@ -1,4 +1,5 @@
 .DS_Store
+xcuserdata/
 
 .env
 Reto_Inicial/Reto_Inicial.xcodeproj/xcshareddata/xcschemes/Reto_Inicial.xcscheme

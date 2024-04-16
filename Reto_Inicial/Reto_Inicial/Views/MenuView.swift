@@ -76,7 +76,7 @@ struct MenuView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: ModeloMLView()) {
+                    NavigationLink(destination: EmptyView()) {
                         VStack{
                             Spacer()
                             Image("menu2")
@@ -94,7 +94,7 @@ struct MenuView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: QuestionView()) {
+                    NavigationLink(destination: EmptyView()) {
                         VStack{
                             Spacer()
                             Image("menu3")
@@ -112,7 +112,7 @@ struct MenuView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: StatsView()) {
+                    NavigationLink(destination: EmptyView()) {
                         VStack{
                             Spacer()
                             Image("menu4")

@@ -120,13 +120,6 @@
 			path = Quizz;
 			sourceTree = "<group>";
 		};
-		207B1E0E2BC8EAF4004D6A8D /* ModeloML */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ModeloML;
-			sourceTree = "<group>";
-		};
 		20DA186F2BA42E88005A1D11 /* ChatBotGPT */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +143,6 @@
 				20E8C06B2BC9C81C009467CA /* iMikers_RayosX.mlpackage */,
 				20E8C0662BC9C644009467CA /* UIImage+Extensions.swift */,
 				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
-				207B1E0E2BC8EAF4004D6A8D /* ModeloML */,
 				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
 				BB3005322B9172A7003E5D35 /* MenuView.swift */,
 				207456D42BC71E34006423FD /* UserService.swift */,

@@ -17,13 +17,5 @@ struct Reto_InicialApp: App {
         WindowGroup(id: "quizz") {
             QuestionView()
         }
-        
-        WindowGroup(id: "3D") {
-            ThreeDView()
-        }.windowStyle(.volumetric)
-
-        ImmersiveSpace(id: "ImmersiveSpace") {
-            ImmersiveView()
-        }.immersionStyle(selection: .constant(.full), in: .full)
     }
 }

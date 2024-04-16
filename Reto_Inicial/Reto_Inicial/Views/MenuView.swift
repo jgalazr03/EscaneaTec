@@ -1,131 +1,165 @@
-
 import SwiftUI
 import RealityKit
 import RealityKitContent
 
-struct Parallelogram: Shape {
-    
-    var depth: CGFloat
-    var flipped: Bool = false
-    
-    func path(in rect: CGRect) -> Path {
-        Path { p in
-            if flipped {
-                p.move(to: CGPoint(x: 0, y: 0))
-                p.addLine(to: CGPoint(x: rect.width - depth, y: 0))
-                p.addLine(to: CGPoint(x: rect.width, y: rect.height))
-                p.addLine(to: CGPoint(x: depth, y: rect.height))
-            } else {
-                p.move(to: CGPoint(x: depth, y: 0))
-                p.addLine(to: CGPoint(x: rect.width, y: 0))
-                p.addLine(to: CGPoint(x: rect.width - depth, y: rect.height))
-                p.addLine(to: CGPoint(x: 0, y: rect.height))
-            }
-            p.closeSubpath()
-        }
-    }
-}
+let userInSessionID = "USER_ID";
+let userInSessionID_Int = "USER_ID_INT"
 
 struct MenuView: View {
     
     @Environment(\.openWindow) private var open
     
+    @State var usuarioVM = UserService()
+    var username: String
+    
     var body: some View {
+        
+        NavigationStack{
             
-        ZStack {
-            
-            Image("backgroundTech")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-            
-            NavigationStack{
+            VStack{
+
+                ZStack{
+                    HStack {
+                        Button {
+                            } label: {
+                                Text("PulmoCare")
+                                    .font(.largeTitle)
+                                    .foregroundStyle(.white)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .scaleEffect(1.5)
+                            .frame(width: 310, height: 50)
+                            .padding()
+                }
+                                    
+                    HStack{
+                        Spacer()
+                        
+                        NavigationLink(destination: ProfileView()) {
+                            Image(systemName: "person.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20)
+                        }
+                        .buttonBorderShape(.circle)
+                        .scaleEffect(1.5)
+                        .overlay(
+                            Circle()
+                                .stroke(Color(red: 86/255, green: 59/255, blue: 117/255), lineWidth: 7)
+                                .frame(width: 70, height: 70)
+                        )
+                    }
+                    .padding(30)
+                }
                 
-                VStack{
-                    
-                    Text("PulmoCare")
-                        .font(.custom("Philosopher-Bold", size: 50))
-                        .foregroundStyle(.black)
-                        .background(Rectangle()
-                            .fill(.gray)
-                            .frame(width: 400, height: 75))
-                        .padding(.top, 75)
+                Spacer()
+                
+                HStack{
                     
                     Spacer()
                     
-                    HStack{
-                        
-                        NavigationLink(destination: ChatView()) {
-                            Text("ChatBot-GPT")
-                                .padding(.all)
-                                .background(Color(red: 234/255, green: 112/255, blue: 112/255))
-                                .ignoresSafeArea()
-                                .padding(-20)
-                                .foregroundColor(.black)
-                                .font(.largeTitle)
-                          }
-                        .mask(Parallelogram(depth: 13))
-                        
-                        NavigationLink(destination: ModeloMLView()) {
-                            Text("Subir Imagen")
-                                .padding(.all)
-                                .background(Color(red: 241/255, green: 245/255, blue: 118/255))
-                                .ignoresSafeArea()
-                                .padding(-20)
-                                .foregroundColor(.black)
-                                .font(.largeTitle)
-                          }
-                        .mask(Parallelogram(depth: 13))
-                        
-                        NavigationLink(destination: StudyView()) {
-                            Text("Study")
-                                .padding(.all)
-                                .background(Color(red: 142/255, green: 232/255, blue: 153/255))
-                                .ignoresSafeArea()
-                                .padding(-20)
-                                .foregroundColor(.black)
-                                .font(.largeTitle)
-                          }
-                        .mask(Parallelogram(depth: 13))
-                        
-                        Button{
-                            open(id: "quizz")
-                        }label: {
-                            Text("Quiz")
-                                .padding(.all)
-                                .background(Color(red: 108/255, green: 192/255, blue: 218/255))
-                                .ignoresSafeArea()
-                                .padding(-20)
-                                .foregroundColor(.black)
-                                .font(.largeTitle)
+                    NavigationLink(destination: ChatView()) {
+                        VStack{
+                            Spacer()
+                            Image("chat")
+                                .resizable()
+                                .frame(width: 190, height: 245)
+                                .cornerRadius(25)
+                            Text("ChatBot")
+                                .padding()
+                                //.foregroundColor(.black)
+                                .font(.title)
                         }
-                        .mask(Parallelogram(depth: 13))
-                        
-                        Button{
-                            open(id: "3D")
-                        }label: {
-                            Text("Modelo 3D")
-                                .padding(.all)
-                                .background(Color(red: 175/255, green: 106/255, blue: 232/255))
-                                .ignoresSafeArea()
-                                .padding(-20)
-                                .foregroundColor(.black)
-                                .font(.largeTitle)
-                        }
-                        .mask(Parallelogram(depth: 13))
-                        
                     }
-                    .padding(.bottom, 150)
+                    .frame(width: 215, height: 325)
+                    .buttonBorderShape(.roundedRectangle(radius: 30.0))
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: ModeloMLView()) {
+                        VStack{
+                            Spacer()
+                            Image("menu2")
+                                .resizable()
+                                .frame(width: 190, height: 245)
+                                .cornerRadius(25)
+                            Text("Modelo ML")
+                                .padding()
+                                //.foregroundColor(.black)
+                                .font(.title)
+                        }
+                    }
+                    .frame(width: 215, height: 325)
+                    .buttonBorderShape(.roundedRectangle(radius: 30.0))
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: QuestionView()) {
+                        VStack{
+                            Spacer()
+                            Image("menu3")
+                                .resizable()
+                                .frame(width: 190, height: 245)
+                                .cornerRadius(25)
+                            Text("Quiz")
+                                .padding()
+                                //.foregroundColor(.black)
+                                .font(.title)
+                        }
+                    }
+                    .frame(width: 215, height: 325)
+                    .buttonBorderShape(.roundedRectangle(radius: 30.0))
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: StatsView()) {
+                        VStack{
+                            Spacer()
+                            Image("menu4")
+                                .resizable()
+                                .frame(width: 190, height: 245)
+                                .cornerRadius(25)
+                            Text("Stats")
+                                .padding()
+                                //.foregroundColor(.black)
+                                .font(.title)
+                        }
+                    }
+                    .frame(width: 215, height: 325)
+                    .buttonBorderShape(.roundedRectangle(radius: 30.0))
+                    
+                    Spacer()
                     
                 }
+                Button("Guardar imagen") {
+                    if let image = UIImage(named: "radio_pulmones") {
+                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                    }
+                }
+                
+                Spacer()
                 
             }
             
         }
-            
+        .task {
+            do {
+                try await usuarioVM.getUserID(username: username)
+                let userIDAsString = String(usuarioVM.userID)
+                print("UserID obtenido:", userIDAsString)
+                UserDefaults.standard.set(userIDAsString, forKey: userInSessionID)
+                UserDefaults.standard.set(usuarioVM.userID, forKey: userInSessionID_Int)
+            } catch {
+                print("Error al llamar a getUserID")
+            }
+        }
+        .ignoresSafeArea()
+        .padding(.bottom, 20)
     }
 }
 
-#Preview {
-    MenuView()
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        MenuView(username: userInSessionID)
+    }
 }

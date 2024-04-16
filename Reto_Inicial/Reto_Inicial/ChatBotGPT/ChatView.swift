@@ -18,16 +18,17 @@ struct ChatView: View {
                 Spacer()
                 VStack {
                     Label {
-                        Text("EscaneaTec")
+                        Text("ChatBot PulmoCare")
                             .bold()
                             .foregroundColor(.white)
-                            .padding(.top, 20)
+                            .padding(.top, -5)
                     } icon: {
                         Image("Logo")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 25, height: 25)
-                            .padding(.top, 20)
+                            .padding(.horizontal, 5)
+                            .padding(.top, -5)
                     }
                 }
                 Spacer()
@@ -57,17 +58,20 @@ struct ChatView: View {
                     .bold()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 16) // Ajusta este valor según los márgenes que prefieras
+                    
                 Button(action: viewModel.sendMessage) {
                     Image(systemName: "paperplane.fill")
                         .resizable()
                         .frame(width: 18, height: 18)
+                    
                 }
                 .padding(.trailing)
             }
             .padding(.horizontal)
+            .padding(.top, 45)
         }
         .padding(.bottom, 20)
-        .background(Color.black)
+        //.background(Color.black)
         .edgesIgnoringSafeArea(.bottom) // Extiende el fondo negro hasta el borde inferior
         .safeAreaInset(edge: .bottom, spacing: 0) {
             Color.clear.frame(height: 48) // Espacio adicional para el área de entrada de texto, ajusta según sea necesario
@@ -132,11 +136,9 @@ struct ChatView: View {
         .transition(.scale)
     }
 
-
-
 }
 
 #Preview {
-    ChatView().preferredColorScheme(.dark)
+    ChatView()
 }
 

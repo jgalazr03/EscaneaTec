@@ -20,13 +20,13 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             
-            Color(red: 27/255, green: 65/255, blue: 127/255)
+            //Color(red: 27/255, green: 65/255, blue: 127/255)
             
             NavigationStack {
                 VStack {
                     Spacer()
 
-                    Text("ScaneaTEC")
+                    Text("PulmoCare")
                         .font(.system(size: 70))
                         .fontWeight(.bold)
 
@@ -34,9 +34,9 @@ struct ContentView: View {
                     NavigationLink{
                         LogInView()
                     }label:{
-                        Text("GET STARTED")
+                        Text("Get Started")
                             .padding(.all)
-                            .background(Color(red: 31/255, green: 191/255, blue: 255/255))
+                            .background(Color(red: 86/255, green: 59/255, blue: 117/255))
                             .cornerRadius(30)
                             .ignoresSafeArea()
                             .padding(-20)
@@ -82,18 +82,3 @@ struct ContentView: View {
     ContentView()
 }
 
-
-/*
- 
- VStack {
-     Model3D(named: "Scene", bundle: realityKitContentBundle)
-         .padding(.bottom, 50)
-
-     Text("Mike")
-
-     Toggle("Show Immersive Space", isOn: $showImmersiveSpace)
-         .toggleStyle(.button)
-         .padding(.top, 50)
- }
- 
- */

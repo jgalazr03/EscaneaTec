@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  PruebaMLModel
-//
-//  Created by Jesus Alonso Galaz Reyes on 14/03/24.
-//
-
 import RealityKit
 import RealityKitContent
 
@@ -107,6 +100,11 @@ struct ModeloMLView: View {
     }
 }
 
-#Preview {
-    ContentView()
+struct ModeloMLView_Previews: PreviewProvider {
+    static var previews: some View {
+        ModeloMLView()
+    }
 }
+
+
+

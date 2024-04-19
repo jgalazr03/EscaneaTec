@@ -35,11 +35,13 @@ struct ModeloMLView: View {
                     .foregroundColor(.white)
                     .padding(.vertical, 12)
                     .padding(.horizontal, 30)
-                    .background(Color.blue)
+                    //.background(Color.blue)
                     .clipShape(Capsule())
                     .shadow(color: .gray, radius: 5, x: 0, y: 5)
             }
             .padding(.bottom, 50)
+            .tint(Color.blue)
+            
         }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: $inputImage)

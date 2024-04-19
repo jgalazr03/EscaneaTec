@@ -1,102 +1,134 @@
-import RealityKit
-import RealityKitContent
-
 import SwiftUI
 import CoreML
+import Vision
 
 struct ModeloMLView: View {
-    @State private var image: Image? = nil
+    @State private var image: Image?
     @State private var showingImagePicker = false
-    @State private var inputImage: UIImage? = nil
-    @State private var predictionLabel: String = ""
+    @State private var inputImage: UIImage?
+    @State private var classificationLabel: String = ""
 
     var body: some View {
-        GeometryReader { geometry in
-            HStack(alignment: .center) {
-                // Lado izquierdo: Botón centrado
-                VStack {
-                    Spacer()
-                    Button(action: {
-                        showingImagePicker = true
-                    }) {
-                        HStack {
-                            Image(systemName: "photo")
-                                .font(.title)
-                            Text("Seleccionar imagen")
-                                .fontWeight(.semibold)
-                                .font(.title)
-                        }
-                        .padding()
-                        .foregroundColor(.white)
-                        .cornerRadius(40)
-                        .padding(.horizontal, 20)
-                    }
-                    Spacer()
-                }
-                .frame(width: geometry.size.width / 2, alignment: .center)
+        VStack {
+            Spacer()
+            
+            VStack(spacing: 20) {
+                image?
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 400, maxHeight: 400)
+                    .shadow(radius: 10)
 
-                // Lado derecho: Imagen y predicción, si están disponibles
-                VStack {
-                    Spacer()
-                    if let image = image {
-                        VStack {
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
-                                .padding()
-                                .offset(x: -85)
-
-                            Text(predictionLabel)
-                                .font(.title2)
-                                .bold()
-                                .foregroundColor(.black) // Color del texto ahora en negro
-                                .padding()
-                                .offset(x: -85)
-                        }
-                        .frame(width: geometry.size.width / 2)
-                        .padding([.top, .horizontal])
-                    } else {
-                        Spacer()
-                    }
-                    Spacer()
+                if !classificationLabel.isEmpty {
+                    formattedClassificationText(label: classificationLabel)
+                        .padding(.horizontal)
                 }
             }
+
+            Spacer()
+            
+            Button(action: {
+                showingImagePicker = true
+            }) {
+                Text("Select Image")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 30)
+                    .background(Color.blue)
+                    .clipShape(Capsule())
+                    .shadow(color: .gray, radius: 5, x: 0, y: 5)
+            }
+            .padding(.bottom, 50)
         }
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: $inputImage)
         }
-        .edgesIgnoringSafeArea(.all)
+        .padding()
+    }
+
+    func formattedClassificationText(label: String) -> Text {
+        let words = label.components(separatedBy: " ")
+        var formattedText = Text("")
+        for word in words {
+            if word == "Normal" || word == "Pneumonia" {
+                formattedText = formattedText + Text(word).bold() + Text(" ")
+            } else {
+                formattedText = formattedText + Text(word) + Text(" ")
+            }
+        }
+        return formattedText.font(.title2)
     }
 
     func loadImage() {
-        guard let inputImage = inputImage else { return }
+        guard let inputImage = self.inputImage else { return }
         image = Image(uiImage: inputImage)
+        classifyImage(image: inputImage)
+    }
 
-        // Convertir UIImage a CVPixelBuffer
-        guard let pixelBuffer = inputImage.toCVPixelBuffer() else {
-            print("Conversión a CVPixelBuffer falló")
+    func classifyImage(image: UIImage) {
+        guard let buffer = image.buffer(),
+              let model = try? VNCoreMLModel(for: Pneumoniacoml(configuration: MLModelConfiguration()).model) else {
+            self.classificationLabel = "Error loading model"
             return
         }
 
-        // Utilizar el modelo para clasificar la imagen
-        do {
-            let model = try iMikers_RayosX(configuration: MLModelConfiguration())
-            let prediction = try model.prediction(image: pixelBuffer)
-
-            DispatchQueue.main.async {
-                // Usar la propiedad 'target' para obtener la etiqueta de predicción
-                self.predictionLabel = prediction.target
-
-                // Si también quieres mostrar la probabilidad de la predicción:
-                if let probability = prediction.targetProbability[prediction.target] {
-                    self.predictionLabel += " (\(probability))"
-                }
+        let request = VNCoreMLRequest(model: model) { request, error in
+            if let error = error {
+                self.classificationLabel = "Error: \(error.localizedDescription)"
+                return
             }
-        } catch {
-            print("Error al realizar la predicción: \(error)")
+            self.processResults(for: request)
         }
+
+        let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
+        do {
+            try handler.perform([request])
+        } catch {
+            classificationLabel = "Failed to perform classification.\n\(error.localizedDescription)"
+        }
+    }
+
+    func processResults(for request: VNRequest) {
+        guard let results = request.results as? [VNClassificationObservation],
+              let topResult = results.first else {
+            classificationLabel = "Unable to classify image."
+            return
+        }
+        
+        // Update UI on the main thread
+        DispatchQueue.main.async {
+            self.classificationLabel = "\(topResult.identifier) with confidence of \(topResult.confidence * 100)%."
+        }
+    }
+}
+
+extension UIImage {
+    func buffer() -> CVPixelBuffer? {
+        let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
+        var pixelBuffer : CVPixelBuffer?
+        let width = 224
+        let height = 224
+        let status = CVPixelBufferCreate(kCFAllocatorDefault, width, height, kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
+        guard status == kCVReturnSuccess, let pixelBuffer = pixelBuffer else {
+            return nil
+        }
+
+        CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
+        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer)
+
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let context = CGContext(data: pixelData, width: width, height: height, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer), space: colorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+
+        context?.translateBy(x: 0, y: CGFloat(height))
+        context?.scaleBy(x: 1.0, y: -1.0)
+
+        UIGraphicsPushContext(context!)
+        self.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+        UIGraphicsPopContext()
+        CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly)
+        
+        return pixelBuffer
     }
 }
 

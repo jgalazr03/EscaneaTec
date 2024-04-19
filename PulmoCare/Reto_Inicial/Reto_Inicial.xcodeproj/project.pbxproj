@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2028AA4A2BD30DF000B8EAD2 /* Pneumoniacoml.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2028AA492BD30DEF00B8EAD2 /* Pneumoniacoml.mlmodel */; };
 		2064B1182BBB790600761134 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2064B1172BBB790600761134 /* QuestionView.swift */; };
 		207456D52BC71E34006423FD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207456D42BC71E34006423FD /* UserService.swift */; };
 		207B1DFC2BC8B154004D6A8D /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207B1DFB2BC8B154004D6A8D /* UserDetail.swift */; };
@@ -25,9 +26,7 @@
 		20DA18802BA42F7B005A1D11 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 20DA187F2BA42F7B005A1D11 /* AlamofireDynamic */; };
 		20DA18892BA4308C005A1D11 /* ModeloMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18882BA4308C005A1D11 /* ModeloMLView.swift */; };
 		20E8C0642BC9B9F1009467CA /* radio_pulmones.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 20E8C0632BC9B9F1009467CA /* radio_pulmones.jpeg */; };
-		20E8C0692BC9C645009467CA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C0662BC9C644009467CA /* UIImage+Extensions.swift */; };
 		20E8C06A2BC9C645009467CA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C0672BC9C644009467CA /* ImagePicker.swift */; };
-		20E8C06C2BC9C81C009467CA /* iMikers_RayosX.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C06B2BC9C81C009467CA /* iMikers_RayosX.mlpackage */; };
 		BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30052E2B91702B003E5D35 /* LogInView.swift */; };
 		BB3005312B917280003E5D35 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005302B917280003E5D35 /* SignUpView.swift */; };
 		BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005322B9172A7003E5D35 /* MenuView.swift */; };
@@ -42,7 +41,21 @@
 		BBBF0F742BA3F30400954478 /* Philosopher-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBF0F732BA3F30400954478 /* Philosopher-Bold.ttf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2028AA4C2BD310F600B8EAD2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2028AA492BD30DEF00B8EAD2 /* Pneumoniacoml.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Pneumoniacoml.mlmodel; sourceTree = "<group>"; };
 		2064B1172BBB790600761134 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		207456D42BC71E34006423FD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		207B1DFB2BC8B154004D6A8D /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -59,9 +72,7 @@
 		20DA187A2BA42F5A005A1D11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20DA18882BA4308C005A1D11 /* ModeloMLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeloMLView.swift; sourceTree = "<group>"; };
 		20E8C0632BC9B9F1009467CA /* radio_pulmones.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = radio_pulmones.jpeg; sourceTree = "<group>"; };
-		20E8C0662BC9C644009467CA /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		20E8C0672BC9C644009467CA /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		20E8C06B2BC9C81C009467CA /* iMikers_RayosX.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = iMikers_RayosX.mlpackage; sourceTree = "<group>"; };
 		BB30052E2B91702B003E5D35 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		BB3005302B917280003E5D35 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		BB3005322B9172A7003E5D35 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -140,9 +151,8 @@
 				BB575E002B9106D300C4BCF8 /* ContentView.swift */,
 				207B1E0C2BC8EAED004D6A8D /* ResultView.swift */,
 				20E8C0672BC9C644009467CA /* ImagePicker.swift */,
-				20E8C06B2BC9C81C009467CA /* iMikers_RayosX.mlpackage */,
-				20E8C0662BC9C644009467CA /* UIImage+Extensions.swift */,
 				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
+				2028AA492BD30DEF00B8EAD2 /* Pneumoniacoml.mlmodel */,
 				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
 				BB3005322B9172A7003E5D35 /* MenuView.swift */,
 				207456D42BC71E34006423FD /* UserService.swift */,
@@ -221,6 +231,7 @@
 				BB575DF32B9106D300C4BCF8 /* Sources */,
 				BB575DF42B9106D300C4BCF8 /* Frameworks */,
 				BB575DF52B9106D300C4BCF8 /* Resources */,
+				2028AA4C2BD310F600B8EAD2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -297,10 +308,10 @@
 				20DA18732BA42EB0005A1D11 /* ChatViewModel.swift in Sources */,
 				207B1E042BC8B1CF004D6A8D /* ChangePasswordView.swift in Sources */,
 				207B1E0D2BC8EAED004D6A8D /* ResultView.swift in Sources */,
-				20E8C06C2BC9C81C009467CA /* iMikers_RayosX.mlpackage in Sources */,
 				20DA18772BA42EC3005A1D11 /* OpenAIService.swift in Sources */,
 				207B1DFE2BC8B176004D6A8D /* Respuesta.swift in Sources */,
 				207456D52BC71E34006423FD /* UserService.swift in Sources */,
+				2028AA4A2BD30DF000B8EAD2 /* Pneumoniacoml.mlmodel in Sources */,
 				BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */,
 				BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */,
 				207B1E092BC8B272004D6A8D /* QuizResultView.swift in Sources */,
@@ -310,7 +321,6 @@
 				20E8C06A2BC9C645009467CA /* ImagePicker.swift in Sources */,
 				2064B1182BBB790600761134 /* QuestionView.swift in Sources */,
 				BB575DFF2B9106D300C4BCF8 /* Reto_InicialApp.swift in Sources */,
-				20E8C0692BC9C645009467CA /* UIImage+Extensions.swift in Sources */,
 				207B1DFC2BC8B154004D6A8D /* UserDetail.swift in Sources */,
 				BB3005312B917280003E5D35 /* SignUpView.swift in Sources */,
 				BB575E032B9106D300C4BCF8 /* ImmersiveView.swift in Sources */,
@@ -450,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Reto_Inicial/Preview Content\"";
+				DEVELOPMENT_TEAM = S8PH2JJCJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -475,6 +486,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Reto_Inicial/Preview Content\"";
+				DEVELOPMENT_TEAM = S8PH2JJCJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";

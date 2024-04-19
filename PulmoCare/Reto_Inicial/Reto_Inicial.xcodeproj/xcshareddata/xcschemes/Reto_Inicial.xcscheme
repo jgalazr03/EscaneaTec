@@ -52,7 +52,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "OPENAI_API_KEY"
-            value = ""
+            value = "Introduce aquí la api key"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

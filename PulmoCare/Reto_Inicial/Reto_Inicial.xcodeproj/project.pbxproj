@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2028AA4A2BD30DF000B8EAD2 /* Pneumoniacoml.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2028AA492BD30DEF00B8EAD2 /* Pneumoniacoml.mlmodel */; };
+		20443B802BD443B1001A1F29 /* Pneumoniacoml.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 20443B7F2BD443B1001A1F29 /* Pneumoniacoml.mlmodel */; };
 		2064B1182BBB790600761134 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2064B1172BBB790600761134 /* QuestionView.swift */; };
 		207456D52BC71E34006423FD /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207456D42BC71E34006423FD /* UserService.swift */; };
 		207B1DFC2BC8B154004D6A8D /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207B1DFB2BC8B154004D6A8D /* UserDetail.swift */; };
@@ -55,7 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2028AA492BD30DEF00B8EAD2 /* Pneumoniacoml.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Pneumoniacoml.mlmodel; sourceTree = "<group>"; };
+		20443B7F2BD443B1001A1F29 /* Pneumoniacoml.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Pneumoniacoml.mlmodel; sourceTree = "<group>"; };
 		2064B1172BBB790600761134 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		207456D42BC71E34006423FD /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		207B1DFB2BC8B154004D6A8D /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
@@ -103,6 +103,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20443B7E2BD44326001A1F29 /* ModeloCoML */ = {
+			isa = PBXGroup;
+			children = (
+				20443B7F2BD443B1001A1F29 /* Pneumoniacoml.mlmodel */,
+				20E8C0672BC9C644009467CA /* ImagePicker.swift */,
+				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
+			);
+			path = ModeloCoML;
+			sourceTree = "<group>";
+		};
+		20443B812BD444B9001A1F29 /* UserSession */ = {
+			isa = PBXGroup;
+			children = (
+				207B1DFD2BC8B176004D6A8D /* Respuesta.swift */,
+				207B1DFB2BC8B154004D6A8D /* UserDetail.swift */,
+			);
+			path = UserSession;
+			sourceTree = "<group>";
+		};
+		20443B822BD444D1001A1F29 /* ApiCalls */ = {
+			isa = PBXGroup;
+			children = (
+				207456D42BC71E34006423FD /* UserService.swift */,
+			);
+			path = ApiCalls;
+			sourceTree = "<group>";
+		};
 		207B1DFF2BC8B194004D6A8D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,18 +139,19 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		207B1E062BC8B1FC004D6A8D /* User Session */ = {
+		207B1E062BC8B1FC004D6A8D /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
 				BB3005302B917280003E5D35 /* SignUpView.swift */,
 				BB30052E2B91702B003E5D35 /* LogInView.swift */,
 			);
-			path = "User Session";
+			path = UserInfo;
 			sourceTree = "<group>";
 		};
 		207B1E072BC8B24E004D6A8D /* Quizz */ = {
 			isa = PBXGroup;
 			children = (
+				207B1E0C2BC8EAED004D6A8D /* ResultView.swift */,
 				2064B1172BBB790600761134 /* QuestionView.swift */,
 				207B1E082BC8B272004D6A8D /* QuizResultView.swift */,
 				207B1E0A2BC8DBC5004D6A8D /* StatsView.swift */,
@@ -146,18 +174,14 @@
 			isa = PBXGroup;
 			children = (
 				207B1E072BC8B24E004D6A8D /* Quizz */,
-				207B1E062BC8B1FC004D6A8D /* User Session */,
+				207B1E062BC8B1FC004D6A8D /* UserInfo */,
 				207B1DFF2BC8B194004D6A8D /* Profile */,
 				BB575E002B9106D300C4BCF8 /* ContentView.swift */,
-				207B1E0C2BC8EAED004D6A8D /* ResultView.swift */,
-				20E8C0672BC9C644009467CA /* ImagePicker.swift */,
-				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
-				2028AA492BD30DEF00B8EAD2 /* Pneumoniacoml.mlmodel */,
+				20443B7E2BD44326001A1F29 /* ModeloCoML */,
 				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
 				BB3005322B9172A7003E5D35 /* MenuView.swift */,
-				207456D42BC71E34006423FD /* UserService.swift */,
-				207B1DFB2BC8B154004D6A8D /* UserDetail.swift */,
-				207B1DFD2BC8B176004D6A8D /* Respuesta.swift */,
+				20443B822BD444D1001A1F29 /* ApiCalls */,
+				20443B812BD444B9001A1F29 /* UserSession */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,7 +335,7 @@
 				20DA18772BA42EC3005A1D11 /* OpenAIService.swift in Sources */,
 				207B1DFE2BC8B176004D6A8D /* Respuesta.swift in Sources */,
 				207456D52BC71E34006423FD /* UserService.swift in Sources */,
-				2028AA4A2BD30DF000B8EAD2 /* Pneumoniacoml.mlmodel in Sources */,
+				20443B802BD443B1001A1F29 /* Pneumoniacoml.mlmodel in Sources */,
 				BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */,
 				BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */,
 				207B1E092BC8B272004D6A8D /* QuizResultView.swift in Sources */,

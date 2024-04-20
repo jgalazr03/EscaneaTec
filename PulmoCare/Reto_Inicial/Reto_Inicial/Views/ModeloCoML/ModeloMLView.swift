@@ -53,7 +53,7 @@ struct ModeloMLView: View {
         let words = label.components(separatedBy: " ")
         var formattedText = Text("")
         for word in words {
-            if word == "Normal" || word == "Pneumonia" {
+            if word == "NORMAL" || word == "PNEUMONIA" {
                 formattedText = formattedText + Text(word).bold() + Text(" ")
             } else {
                 formattedText = formattedText + Text(word) + Text(" ")

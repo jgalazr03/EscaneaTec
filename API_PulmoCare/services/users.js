@@ -1,6 +1,7 @@
 const dbService = require('../config/db.js')
 
 module.exports = {
+    /*
     getAllUsers: () => {
         sql = 'SELECT id, email FROM usuarios'
         return dbService.querypromise(sql)
@@ -40,6 +41,7 @@ module.exports = {
                `
         return dbService.querypromise(sql)
     },
+    */
 
     registerUser: (body) => {
         const { username, email, password } = body;

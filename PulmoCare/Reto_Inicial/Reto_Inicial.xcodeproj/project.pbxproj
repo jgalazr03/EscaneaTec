@@ -23,7 +23,6 @@
 		20DA18772BA42EC3005A1D11 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18762BA42EC3005A1D11 /* OpenAIService.swift */; };
 		20DA187B2BA42F5A005A1D11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DA187A2BA42F5A005A1D11 /* Assets.xcassets */; };
 		20DA187E2BA42F7B005A1D11 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 20DA187D2BA42F7B005A1D11 /* Alamofire */; };
-		20DA18802BA42F7B005A1D11 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 20DA187F2BA42F7B005A1D11 /* AlamofireDynamic */; };
 		20DA18892BA4308C005A1D11 /* ModeloMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18882BA4308C005A1D11 /* ModeloMLView.swift */; };
 		20E8C0642BC9B9F1009467CA /* radio_pulmones.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 20E8C0632BC9B9F1009467CA /* radio_pulmones.jpeg */; };
 		20E8C06A2BC9C645009467CA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C0672BC9C644009467CA /* ImagePicker.swift */; };
@@ -95,7 +94,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB575DFD2B9106D300C4BCF8 /* RealityKitContent in Frameworks */,
-				20DA18802BA42F7B005A1D11 /* AlamofireDynamic in Frameworks */,
 				20DA187E2BA42F7B005A1D11 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +263,6 @@
 			packageProductDependencies = (
 				BB575DFC2B9106D300C4BCF8 /* RealityKitContent */,
 				20DA187D2BA42F7B005A1D11 /* Alamofire */,
-				20DA187F2BA42F7B005A1D11 /* AlamofireDynamic */,
 			);
 			productName = Reto_Inicial;
 			productReference = BB575DF72B9106D300C4BCF8 /* Reto_Inicial.app */;
@@ -567,11 +564,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 20DA187C2BA42F7B005A1D11 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		20DA187F2BA42F7B005A1D11 /* AlamofireDynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 20DA187C2BA42F7B005A1D11 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = AlamofireDynamic;
 		};
 		BB575DFC2B9106D300C4BCF8 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;

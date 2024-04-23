@@ -168,6 +168,19 @@ module.exports = {
             res.json({"message": `Error al obtener los usuarios. Err: ${err} `})
         }
     },
-    
+
+    getStudy: async (req, res) => {
+        try {
+            const studyTable = await UserServices.getStudy();
+            if (studyTable) {
+                res.status(200).json(studyTable);
+            } else {
+                res.status(404).json({"message": "Información de la tabla Study no encontrada"});
+            }
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({"message": `Error al recuperar la información de Study. Err: ${err}`});
+        }
+    }
 
 }

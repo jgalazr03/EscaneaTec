@@ -14,8 +14,21 @@ struct Reto_InicialApp: App {
             ContentView()
         }
         
-        WindowGroup(id: "quizz") {
-            QuestionView()
+        WindowGroup(id: "ChatBot") {
+            ChatView()
         }
+        
+        WindowGroup(id: "Stats") {
+            StatsView()
+        }
+        
+        WindowGroup(id: "Study") {
+            StudyView()
+        }
+        
+        WindowGroup(id: "ML") {
+            ModeloMLView()
+        }
+        
     }
 }

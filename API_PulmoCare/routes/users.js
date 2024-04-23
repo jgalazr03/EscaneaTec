@@ -27,8 +27,9 @@ router.get('/userdata/:id', UserControllers.getUserInfo);
 router.get('/userquizzes/:id', UserControllers.getUserQuizzesInfo);
 
 //Obtener la id en base al username
-router.get('/getid/:username', UserControllers.getId)
+router.get('/getid/:username', UserControllers.getId);
 
-
+//Obtener la info de Study
+router.get('/getstudy/enfermedades', UserControllers.getStudy);
 
 module.exports = router;

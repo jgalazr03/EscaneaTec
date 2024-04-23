@@ -23,11 +23,8 @@
 		20DA187B2BA42F5A005A1D11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DA187A2BA42F5A005A1D11 /* Assets.xcassets */; };
 		20DA187E2BA42F7B005A1D11 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 20DA187D2BA42F7B005A1D11 /* Alamofire */; };
 		20DA18802BA42F7B005A1D11 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 20DA187F2BA42F7B005A1D11 /* AlamofireDynamic */; };
-		20DA18892BA4308C005A1D11 /* ModeloMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DA18882BA4308C005A1D11 /* ModeloMLView.swift */; };
 		20E8C0642BC9B9F1009467CA /* radio_pulmones.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 20E8C0632BC9B9F1009467CA /* radio_pulmones.jpeg */; };
 		20E8C0692BC9C645009467CA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C0662BC9C644009467CA /* UIImage+Extensions.swift */; };
-		20E8C06A2BC9C645009467CA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C0672BC9C644009467CA /* ImagePicker.swift */; };
-		20E8C06C2BC9C81C009467CA /* iMikers_RayosX.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 20E8C06B2BC9C81C009467CA /* iMikers_RayosX.mlpackage */; };
 		BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB30052E2B91702B003E5D35 /* LogInView.swift */; };
 		BB3005312B917280003E5D35 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005302B917280003E5D35 /* SignUpView.swift */; };
 		BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3005322B9172A7003E5D35 /* MenuView.swift */; };
@@ -37,9 +34,19 @@
 		BB575E032B9106D300C4BCF8 /* ImmersiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */; };
 		BB575E052B9106D300C4BCF8 /* ImageBasedLighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = BB575E042B9106D300C4BCF8 /* ImageBasedLighting.skybox */; };
 		BB575E0A2B9106D400C4BCF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB575E092B9106D400C4BCF8 /* Preview Assets.xcassets */; };
+		BB73C6A22BD799F5009670E9 /* CombinedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73C6A12BD799F5009670E9 /* CombinedViewModel.swift */; };
+		BB73C6A52BD79A4A009670E9 /* ModeloMLViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73C6A42BD79A4A009670E9 /* ModeloMLViewModel.swift */; };
+		BB73C6A92BD79AEC009670E9 /* AnotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73C6A82BD79AEC009670E9 /* AnotherView.swift */; };
+		BBAE78262BD7C8D90036586F /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAE78252BD7C8D90036586F /* Testing.swift */; };
+		BBBB6C7D2BD2EF23007328E0 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBB6C7C2BD2EF23007328E0 /* StudyView.swift */; };
 		BBBF0F702BA3E24C00954478 /* Pridi-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBF0F6F2BA3E24C00954478 /* Pridi-Medium.ttf */; };
 		BBBF0F722BA3E25900954478 /* Pridi-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBF0F712BA3E25900954478 /* Pridi-Light.ttf */; };
 		BBBF0F742BA3F30400954478 /* Philosopher-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBF0F732BA3F30400954478 /* Philosopher-Bold.ttf */; };
+		BBCFEC1F2BD7252900EB3E6E /* PreguntasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCFEC1E2BD7252900EB3E6E /* PreguntasView.swift */; };
+		BBCFEC212BD7261900EB3E6E /* ModeloMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCFEC202BD7261900EB3E6E /* ModeloMLView.swift */; };
+		BBCFEC232BD7268D00EB3E6E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCFEC222BD7268D00EB3E6E /* ImagePicker.swift */; };
+		BBCFEC262BD7275600EB3E6E /* Pneumoniacoml.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BBCFEC252BD7275500EB3E6E /* Pneumoniacoml.mlmodel */; };
+		BBCFEC292BD73AC800EB3E6E /* RespuestasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCFEC282BD73AC800EB3E6E /* RespuestasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,11 +64,8 @@
 		20DA18742BA42EB7005A1D11 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		20DA18762BA42EC3005A1D11 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		20DA187A2BA42F5A005A1D11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		20DA18882BA4308C005A1D11 /* ModeloMLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeloMLView.swift; sourceTree = "<group>"; };
 		20E8C0632BC9B9F1009467CA /* radio_pulmones.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = radio_pulmones.jpeg; sourceTree = "<group>"; };
 		20E8C0662BC9C644009467CA /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		20E8C0672BC9C644009467CA /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		20E8C06B2BC9C81C009467CA /* iMikers_RayosX.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = iMikers_RayosX.mlpackage; sourceTree = "<group>"; };
 		BB30052E2B91702B003E5D35 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		BB3005302B917280003E5D35 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		BB3005322B9172A7003E5D35 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -73,9 +77,19 @@
 		BB575E042B9106D300C4BCF8 /* ImageBasedLighting.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = ImageBasedLighting.skybox; sourceTree = "<group>"; };
 		BB575E092B9106D400C4BCF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BB575E0B2B9106D400C4BCF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB73C6A12BD799F5009670E9 /* CombinedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedViewModel.swift; sourceTree = "<group>"; };
+		BB73C6A42BD79A4A009670E9 /* ModeloMLViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloMLViewModel.swift; sourceTree = "<group>"; };
+		BB73C6A82BD79AEC009670E9 /* AnotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherView.swift; sourceTree = "<group>"; };
+		BBAE78252BD7C8D90036586F /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
+		BBBB6C7C2BD2EF23007328E0 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
 		BBBF0F6F2BA3E24C00954478 /* Pridi-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pridi-Medium.ttf"; sourceTree = "<group>"; };
 		BBBF0F712BA3E25900954478 /* Pridi-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pridi-Light.ttf"; sourceTree = "<group>"; };
 		BBBF0F732BA3F30400954478 /* Philosopher-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Philosopher-Bold.ttf"; sourceTree = "<group>"; };
+		BBCFEC1E2BD7252900EB3E6E /* PreguntasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreguntasView.swift; sourceTree = "<group>"; };
+		BBCFEC202BD7261900EB3E6E /* ModeloMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloMLView.swift; sourceTree = "<group>"; };
+		BBCFEC222BD7268D00EB3E6E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		BBCFEC252BD7275500EB3E6E /* Pneumoniacoml.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Pneumoniacoml.mlmodel; sourceTree = "<group>"; };
+		BBCFEC282BD73AC800EB3E6E /* RespuestasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespuestasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +152,17 @@
 				207B1E062BC8B1FC004D6A8D /* User Session */,
 				207B1DFF2BC8B194004D6A8D /* Profile */,
 				BB575E002B9106D300C4BCF8 /* ContentView.swift */,
+				BBCFEC202BD7261900EB3E6E /* ModeloMLView.swift */,
+				BBCFEC222BD7268D00EB3E6E /* ImagePicker.swift */,
+				BBCFEC252BD7275500EB3E6E /* Pneumoniacoml.mlmodel */,
 				207B1E0C2BC8EAED004D6A8D /* ResultView.swift */,
-				20E8C0672BC9C644009467CA /* ImagePicker.swift */,
-				20E8C06B2BC9C81C009467CA /* iMikers_RayosX.mlpackage */,
+				BBBB6C7C2BD2EF23007328E0 /* StudyView.swift */,
 				20E8C0662BC9C644009467CA /* UIImage+Extensions.swift */,
-				20DA18882BA4308C005A1D11 /* ModeloMLView.swift */,
+				BBCFEC272BD727D300EB3E6E /* ModeloCoML */,
 				BB575E022B9106D300C4BCF8 /* ImmersiveView.swift */,
+				BBCFEC1E2BD7252900EB3E6E /* PreguntasView.swift */,
+				BBAE78252BD7C8D90036586F /* Testing.swift */,
+				BBCFEC282BD73AC800EB3E6E /* RespuestasView.swift */,
 				BB3005322B9172A7003E5D35 /* MenuView.swift */,
 				207456D42BC71E34006423FD /* UserService.swift */,
 				207B1DFB2BC8B154004D6A8D /* UserDetail.swift */,
@@ -175,6 +194,7 @@
 			children = (
 				BB575DFE2B9106D300C4BCF8 /* Reto_InicialApp.swift */,
 				20DA188A2BA56904005A1D11 /* Views */,
+				BB73C6A32BD79A13009670E9 /* Yisu */,
 				20DA186F2BA42E88005A1D11 /* ChatBotGPT */,
 				BB575E042B9106D300C4BCF8 /* ImageBasedLighting.skybox */,
 				20DA187A2BA42F5A005A1D11 /* Assets.xcassets */,
@@ -201,6 +221,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BB73C6A32BD79A13009670E9 /* Yisu */ = {
+			isa = PBXGroup;
+			children = (
+				BB73C6A12BD799F5009670E9 /* CombinedViewModel.swift */,
+				BB73C6A42BD79A4A009670E9 /* ModeloMLViewModel.swift */,
+				BB73C6A82BD79AEC009670E9 /* AnotherView.swift */,
+			);
+			path = Yisu;
+			sourceTree = "<group>";
+		};
 		BBBF0F6E2BA3E21800954478 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +239,13 @@
 				BBBF0F732BA3F30400954478 /* Philosopher-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BBCFEC272BD727D300EB3E6E /* ModeloCoML */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModeloCoML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,17 +334,20 @@
 				20DA18732BA42EB0005A1D11 /* ChatViewModel.swift in Sources */,
 				207B1E042BC8B1CF004D6A8D /* ChangePasswordView.swift in Sources */,
 				207B1E0D2BC8EAED004D6A8D /* ResultView.swift in Sources */,
-				20E8C06C2BC9C81C009467CA /* iMikers_RayosX.mlpackage in Sources */,
 				20DA18772BA42EC3005A1D11 /* OpenAIService.swift in Sources */,
 				207B1DFE2BC8B176004D6A8D /* Respuesta.swift in Sources */,
+				BBCFEC262BD7275600EB3E6E /* Pneumoniacoml.mlmodel in Sources */,
 				207456D52BC71E34006423FD /* UserService.swift in Sources */,
 				BB3005332B9172A7003E5D35 /* MenuView.swift in Sources */,
 				BB30052F2B91702C003E5D35 /* LogInView.swift in Sources */,
+				BBCFEC1F2BD7252900EB3E6E /* PreguntasView.swift in Sources */,
 				207B1E092BC8B272004D6A8D /* QuizResultView.swift in Sources */,
+				BB73C6A92BD79AEC009670E9 /* AnotherView.swift in Sources */,
+				BBAE78262BD7C8D90036586F /* Testing.swift in Sources */,
+				BB73C6A52BD79A4A009670E9 /* ModeloMLViewModel.swift in Sources */,
+				BB73C6A22BD799F5009670E9 /* CombinedViewModel.swift in Sources */,
 				20DA18752BA42EB7005A1D11 /* ChatView.swift in Sources */,
 				BB575E012B9106D300C4BCF8 /* ContentView.swift in Sources */,
-				20DA18892BA4308C005A1D11 /* ModeloMLView.swift in Sources */,
-				20E8C06A2BC9C645009467CA /* ImagePicker.swift in Sources */,
 				2064B1182BBB790600761134 /* QuestionView.swift in Sources */,
 				BB575DFF2B9106D300C4BCF8 /* Reto_InicialApp.swift in Sources */,
 				20E8C0692BC9C645009467CA /* UIImage+Extensions.swift in Sources */,
@@ -316,7 +356,11 @@
 				BB575E032B9106D300C4BCF8 /* ImmersiveView.swift in Sources */,
 				207B1E0B2BC8DBC5004D6A8D /* StatsView.swift in Sources */,
 				207B1E012BC8B1AC004D6A8D /* ProfileView.swift in Sources */,
+				BBCFEC212BD7261900EB3E6E /* ModeloMLView.swift in Sources */,
+				BBCFEC232BD7268D00EB3E6E /* ImagePicker.swift in Sources */,
+				BBBB6C7D2BD2EF23007328E0 /* StudyView.swift in Sources */,
 				20DA18712BA42EA0005A1D11 /* Constants.swift in Sources */,
+				BBCFEC292BD73AC800EB3E6E /* RespuestasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +497,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Esta aplicación necesita guardar imágenes en tu galería para que puedas revisarlas más tarde.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,6 +524,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Esta aplicación necesita guardar imágenes en tu galería para que puedas revisarlas más tarde.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

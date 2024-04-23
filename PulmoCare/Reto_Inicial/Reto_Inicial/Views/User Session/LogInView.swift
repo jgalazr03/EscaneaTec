@@ -26,25 +26,25 @@ struct LogInView: View {
                 VStack {
                     Spacer()
                     
-                    Text("Login")
+                    Text("Iniciar Sesión")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.bottom, 30)
                     
-                    TextField("Username", text: $username)
+                    TextField("Nombre de usuario", text: $username)
                         .foregroundColor(Color.white)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 40)
                         .frame(width: 400)
                     
-                    SecureField("Password", text: $password)
+                    SecureField("Contraseña", text: $password)
                         .foregroundColor(Color.white)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.horizontal, 40)
                         .padding(.top, 10)
                         .frame(width: 400)
                 
-                    Text("Login")
+                    Text("Iniciar Sesión")
                         .padding(.all)
                         .background(Color(red: 86/255, green: 59/255, blue: 117/255))
                         .cornerRadius(30)
@@ -68,12 +68,12 @@ struct LogInView: View {
                     Spacer()
                     
                     HStack {
-                        Text("Don't have an account?")
+                        Text("¿No tienes una cuenta?")
                             .font(.subheadline)
                             .fontWeight(.bold)
                         
                         NavigationLink(destination: SignUpView()) {
-                            Text("Sign Up")
+                            Text("Registrarse")
                                 .padding(.all)
                                 .background(Color(red: 86/255, green: 59/255, blue: 117/255))
                                 .cornerRadius(30)

@@ -156,5 +156,29 @@ module.exports = {
 
         return dbService.querypromise(sql)
     },
+
+    getStudy: async () => {
+    
+        const sqlTotal = `
+            SELECT *
+            FROM study
+        `;
+    
+        try {
+            const result = await dbService.querypromise(sqlTotal);
+            if (result.length > 0) {
+                const data = result.map(row => ({
+                    id_enfermedad: parseInt(row.id_enfermedad, 10),
+                    nombre_enfermedad: row.nombre_enfermedad,
+                    informacion: row.informacion
+                }));
+                return data;
+            } else {
+                return null;
+            }
+        } catch (err) {
+            throw err;
+        }
+    },
     
 }

@@ -53,7 +53,7 @@ struct ChatView: View {
             }
 
             HStack {
-                TextField("Enter a message...", text: $viewModel.currentInput)
+                TextField("Escribir mensaje...", text: $viewModel.currentInput)
                     .foregroundColor(.white)
                     .bold()
                     .textFieldStyle(RoundedBorderTextFieldStyle())

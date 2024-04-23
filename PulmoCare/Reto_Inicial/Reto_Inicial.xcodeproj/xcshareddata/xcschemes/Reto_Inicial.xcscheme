@@ -51,7 +51,7 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "OPENAI_API_KEY"
+            key = "OPENAI_KEY"
             value = ""
             isEnabled = "YES">
          </EnvironmentVariable>

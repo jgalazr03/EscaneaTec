@@ -61,7 +61,7 @@ struct StatsView: View {
                 .fontWeight(.bold)
                 .padding(.bottom, 5)
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.gray.opacity(0.2))
+                .fill(Color(red: 86/255, green: 59/255, blue: 117/255).opacity(0.75))
                 .frame(width: 120, height: 120)
                 .overlay(
                     Text(value)

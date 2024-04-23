@@ -1,110 +1,61 @@
-import RealityKit
-import RealityKitContent
-
 import SwiftUI
-import CoreML
 
 struct ModeloMLView: View {
-    @State private var image: Image? = nil
+    @StateObject private var viewModel = CombinedViewModel()
     @State private var showingImagePicker = false
-    @State private var inputImage: UIImage? = nil
-    @State private var predictionLabel: String = ""
+    
+    @State private var botonPresionado = false
 
     var body: some View {
-        GeometryReader { geometry in
-            HStack(alignment: .center) {
-                // Lado izquierdo: Botón centrado
-                VStack {
-                    Spacer()
-                    Button(action: {
-                        showingImagePicker = true
-                    }) {
-                        HStack {
-                            Image(systemName: "photo")
-                                .font(.title)
-                            Text("Seleccionar imagen")
-                                .fontWeight(.semibold)
-                                .font(.title)
-                        }
-                        .padding()
+        NavigationStack {
+            VStack {
+                Spacer()
+                
+                Button(action: {
+                    showingImagePicker = true
+                    botonPresionado = true
+                }) {
+                    Text("Seleccionar Imagen")
+                        .font(.headline)
                         .foregroundColor(.white)
-                        .cornerRadius(40)
-                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .padding(.horizontal, 30)
+                        .clipShape(Capsule())
+                        .shadow(color: .gray, radius: 5, x: 0, y: 5)
+                }
+                .tint(Color(red: 86/255, green: 59/255, blue: 117/255))
+                
+                if botonPresionado == true && viewModel.isAnalysisComplete == false{
+                    ProgressView("Cargando...")
+                        .padding()
+                }
+                
+                if viewModel.isAnalysisComplete {
+                    NavigationLink(destination: PreguntasView().environmentObject(viewModel),
+                                   isActive: $viewModel.isAnalysisComplete) {
+                        Text("Empezar Práctica")
+                            .foregroundColor(Color.black)
+                            .padding()
+                            .clipShape(Capsule())
                     }
-                    Spacer()
+                    .tint(Color(red: 190/255, green: 170/255, blue: 214/255))
+                    .padding()
+                    .disabled(!viewModel.isAnalysisComplete)
                 }
-                .frame(width: geometry.size.width / 2, alignment: .center)
 
-                // Lado derecho: Imagen y predicción, si están disponibles
-                VStack {
-                    Spacer()
-                    if let image = image {
-                        VStack {
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(10)
-                                .shadow(radius: 5)
-                                .padding()
-                                .offset(x: -85)
-
-                            Text(predictionLabel)
-                                .font(.title2)
-                                .bold()
-                                .foregroundColor(.black) // Color del texto ahora en negro
-                                .padding()
-                                .offset(x: -85)
-                        }
-                        .frame(width: geometry.size.width / 2)
-                        .padding([.top, .horizontal])
-                    } else {
-                        Spacer()
-                    }
-                    Spacer()
-                }
+                Spacer()
             }
-        }
-        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-            ImagePicker(image: $inputImage)
-        }
-        .edgesIgnoringSafeArea(.all)
-    }
-
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
-
-        // Convertir UIImage a CVPixelBuffer
-        guard let pixelBuffer = inputImage.toCVPixelBuffer() else {
-            print("Conversión a CVPixelBuffer falló")
-            return
-        }
-
-        // Utilizar el modelo para clasificar la imagen
-        do {
-            let model = try iMikers_RayosX(configuration: MLModelConfiguration())
-            let prediction = try model.prediction(image: pixelBuffer)
-
-            DispatchQueue.main.async {
-                // Usar la propiedad 'target' para obtener la etiqueta de predicción
-                self.predictionLabel = prediction.target
-
-                // Si también quieres mostrar la probabilidad de la predicción:
-                if let probability = prediction.targetProbability[prediction.target] {
-                    self.predictionLabel += " (\(probability))"
-                }
+            .sheet(isPresented: $showingImagePicker, onDismiss: viewModel.loadImage) {
+                ImagePicker(image: $viewModel.inputImage)
             }
-        } catch {
-            print("Error al realizar la predicción: \(error)")
+            .padding()
         }
     }
 }
+
 
 struct ModeloMLView_Previews: PreviewProvider {
     static var previews: some View {
-        ModeloMLView()
+        ModeloMLView().environmentObject(CombinedViewModel())
     }
 }
-
-
-

@@ -18,9 +18,15 @@ struct QuestionView: View {
     @State private var showingScoreModal = false
     @State private var quizStarted = false
     
+    @State private var correction = ""
+    @State private var correctionWindow: Bool = false
+    
     private let openAIService = OpenAIService()
     
-    init() {
+    let enfermedad: String
+    
+    init(enfermedad: String) {
+        self.enfermedad = enfermedad
         // Inicializar el array de progreso con valores iniciales de 0.0 y color verde
         _progress = State(initialValue: Array(repeating: (value: 0.0, color: .gray), count: totalQuestions))
     }
@@ -29,15 +35,18 @@ struct QuestionView: View {
         VStack {
             // Muestra el botón "Start Quiz" cuando el quiz no ha comenzado
             if !quizStarted {
+                Text("Tema: \(enfermedad)")
+                    .font(.largeTitle)
+                    .padding()
                 Button(action: {
                     startQuiz()
                 }){
-                    Text("Start Quiz")
+                    Text("Empezar Quiz")
                         .foregroundColor(.white)
                 }
                 .scaleEffect(1.5)
                 .tint(Color(red: 86/255, green: 59/255, blue: 117/255))
-                .padding(.bottom, 50)
+                .padding(.bottom, 100)
             } else {
                 // Indicador del número de pregunta y contenido del quiz
                 VStack {
@@ -54,6 +63,15 @@ struct QuestionView: View {
                             .padding()
                             .lineLimit(nil)
                         Spacer()
+                        /*
+                        if (correctionWindow){
+                            Button(action: {
+
+                            }) {
+                                Text("!")
+                            }
+                        }
+                         */
                         ForEach(0..<questionAndAnswers.answers.count, id: \.self) { index in
                             Button(action: {
                                 selectedAnswer = index
@@ -114,7 +132,7 @@ struct QuestionView: View {
 
 
     func generateQuestionAndAnswer() {
-        let preguntaYRespuesta = "Hazme una pregunta general de neumonía y dame cuatro respuestas a dicha pregunta, tres deben ser incorrectas y una debe ser la correcta. Necesito que me lo des estrictamente en este formato: 'Pregunta\nRespuesta1\nRespuesta2\nRespuesta3\nRespuesta4\nNumeroDeRespuestaCorrecta'. Si agregas algo más a este formato, aunque sea solo un salto de línea adicional, tu mensaje no podrá ser procesado por el sistema y fallará. Un ejemplo explicito del formato que te pido es este: ¿Cuál es la función principal del hígado en el cuerpo humano?\nAyuda en la digestión produciendo bilis\nRegula el nivel de azúcar en sangre\nProduce y libera oxígeno a la sangre\nProducción de células rojas de la sangre\n2"
+        let preguntaYRespuesta = "Hazme una pregunta general de \(enfermedad) y dame cuatro respuestas a dicha pregunta, tres deben ser incorrectas y una debe ser la correcta. Necesito que me lo des estrictamente en este formato: 'Pregunta\nRespuesta1\nRespuesta2\nRespuesta3\nRespuesta4\nNumeroDeRespuestaCorrecta'. Si agregas algo más a este formato, aunque sea solo un salto de línea adicional, tu mensaje no podrá ser procesado por el sistema y fallará. Un ejemplo explicito del formato que te pido es este: ¿Cuál es la función principal del hígado en el cuerpo humano?\nAyuda en la digestión produciendo bilis\nRegula el nivel de azúcar en sangre\nProduce y libera oxígeno a la sangre\nProducción de células rojas de la sangre\n2"
         
         // Crea un nuevo mensaje con la pregunta y la solicitud de respuesta combinadas
         let questionAndAnswerMessage = Message(id: UUID(), role: .system, content: preguntaYRespuesta, createAt: Date())
@@ -159,6 +177,8 @@ struct QuestionView: View {
         if isAnswerCorrect {
             // Asumiendo 25 puntos por respuesta correcta, ya que son 4 preguntas
             totalScore += 25
+        }else{
+            correctionWindow = true
         }
         updateProgress()
         
@@ -182,8 +202,8 @@ struct QuestionView: View {
     }
     
     func reiniciar() {
-        // Verificar si la respuesta seleccionada es correcta
         questionAndAnswers = nil
+        correctionWindow = false
     }
     
     func updateProgress() {
@@ -227,6 +247,28 @@ struct QuestionView: View {
         progress = Array(repeating: (value: 0.0, color: .gray), count: totalQuestions)
         // No llamar a generateQuestionAndAnswer aquí para permitir que el usuario inicie el quiz manualmente
     }
+    
+    func generateCorrection(pregunta: String, respuesta: String) {
+        let mensaje = "Para la siguiente pregunta: \(pregunta). ¿Por qué esta respuesta a esa pregunta es incorrecta?: \(respuesta)"
+        
+        // Crea un nuevo mensaje con la pregunta y la solicitud de respuesta combinadas
+        let message = Message(id: UUID(), role: .system, content: mensaje, createAt: Date())
+        
+        // Envía el mensaje al servicio de ChatGPT para generar una pregunta y su respuesta
+        Task {
+            let response = await openAIService.sendMessage(messages: [message])
+            print("Response received")
+            guard let receivedOpenAIMessage = response?.choices.first?.message else {
+                print("No se pudo recibir el mensaje")
+                return
+            }
+            
+            let receivedMessage = Message(id: UUID(), role: receivedOpenAIMessage.role, content: receivedOpenAIMessage.content, createAt: Date())
+            await MainActor.run {
+                correction = receivedMessage.content
+            }
+        }
+    }
 
 }
 
@@ -264,5 +306,5 @@ struct ScoreModalView: View {
 }
 
 #Preview {
-    QuestionView()
+    QuestionView(enfermedad: "Pneumonia")
 }

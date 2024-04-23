@@ -58,34 +58,17 @@ struct MenuView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: ChatView()) {
-                        VStack{
-                            Spacer()
-                            Image("chat")
-                                .resizable()
-                                .frame(width: 190, height: 245)
-                                .cornerRadius(25)
-                            Text("ChatBot")
-                                .padding()
-                                //.foregroundColor(.black)
-                                .font(.title)
-                        }
-                    }
-                    .frame(width: 215, height: 325)
-                    .buttonBorderShape(.roundedRectangle(radius: 30.0))
-                    
-                    Spacer()
-                    
-                    NavigationLink(destination: ModeloMLView()) {
+                    Button{
+                        open(id: "ML")
+                    }label: {
                         VStack{
                             Spacer()
                             Image("menu2")
                                 .resizable()
                                 .frame(width: 190, height: 245)
                                 .cornerRadius(25)
-                            Text("Modelo ML")
+                            Text("Subir Imagen")
                                 .padding()
-                                //.foregroundColor(.black)
                                 .font(.title)
                         }
                     }
@@ -94,16 +77,17 @@ struct MenuView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: QuestionView()) {
+                    Button{
+                        open(id: "Study")
+                    }label: {
                         VStack{
                             Spacer()
                             Image("menu3")
                                 .resizable()
                                 .frame(width: 190, height: 245)
                                 .cornerRadius(25)
-                            Text("Quiz")
+                            Text("Estudio")
                                 .padding()
-                                //.foregroundColor(.black)
                                 .font(.title)
                         }
                     }
@@ -112,16 +96,17 @@ struct MenuView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: StatsView()) {
+                    Button{
+                        open(id: "Stats")
+                    }label: {
                         VStack{
                             Spacer()
-                            Image("menu4")
+                            Image("stats")
                                 .resizable()
                                 .frame(width: 190, height: 245)
                                 .cornerRadius(25)
-                            Text("Stats")
+                            Text("Estadísticas")
                                 .padding()
-                                //.foregroundColor(.black)
                                 .font(.title)
                         }
                     }
@@ -131,13 +116,30 @@ struct MenuView: View {
                     Spacer()
                     
                 }
-                Button("Guardar imagen") {
-                    if let image = UIImage(named: "radio_pulmones") {
-                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                    }
-                }
                 
                 Spacer()
+                
+                HStack{
+                    
+                    Spacer()
+                    
+                    Button{
+                        open(id: "ChatBot")
+                    }label: {
+                        Image("logoChat")
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                    }
+                    .buttonBorderShape(.circle)
+                    .padding()
+                    .overlay(
+                        Circle()
+                            .stroke(Color(red: 86/255, green: 59/255, blue: 117/255), lineWidth: 7)
+                            .frame(width: 71, height: 71)
+                    )
+                    
+                }
+                
                 
             }
             

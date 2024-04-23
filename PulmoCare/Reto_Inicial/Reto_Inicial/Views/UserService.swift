@@ -4,6 +4,7 @@
 //
 //  Created by Jesus Alonso Galaz Reyes on 08/04/24.
 //
+// http://192.168.237.174:3000/
 
 import Foundation
 
@@ -12,7 +13,7 @@ class UserService {
     var userID = Int()
 
     func registerUser(email: String, username: String, password: String, completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/register") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/register") else {
             completion(false)
             return
         }
@@ -44,7 +45,7 @@ class UserService {
     }
     
     func loginUser(login: String, password: String, completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/login") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/login") else {
             completion(false)
             return
         }
@@ -75,7 +76,7 @@ class UserService {
     }
     
     func addQuizPuntuation(userId: Int, score: Int, date: String, completion: @escaping (Bool) -> Void) {
-            guard let url = URL(string: "http://localhost:3000/users/quiz") else {
+            guard let url = URL(string: "http://159.54.129.113:3000/users/quiz") else {
                 completion(false)
                 return
             }
@@ -107,7 +108,7 @@ class UserService {
         }
         
     func getLastScores(userId: Int, completion: @escaping (Bool, [[String: Any]]?) -> Void) {
-        let urlString = "http://localhost:3000/users/lastscores/\(userId)"
+        let urlString = "http://159.54.129.113:3000/users/lastscores/\(userId)"
         guard let url = URL(string: urlString) else {
             completion(false, nil)
             return
@@ -138,7 +139,7 @@ class UserService {
     }
     
     func changeUserPassword(userId: String, newPassword: String, completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/changepw/\(userId)") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/changepw/\(userId)") else {
             completion(false)
             return
         }
@@ -166,7 +167,7 @@ class UserService {
     }
     
     func getUserInfo(userId: String, completion: @escaping (Bool, [String: Any]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/userdata/\(userId)") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/userdata/\(userId)") else {
             completion(false, nil)
             return
         }
@@ -196,7 +197,7 @@ class UserService {
     }
 
     func getUserQuizzesInfo(userId: String, completion: @escaping (Bool, [String: Any]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/userquizzes/\(userId)") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/userquizzes/\(userId)") else {
             completion(false, nil)
             return
         }
@@ -225,9 +226,40 @@ class UserService {
         }.resume()
     }
     
+    // STUDY
+    func getStudyInfo(completion: @escaping (Bool, [[String: Any]]?) -> Void) {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/getstudy/enfermedades") else {
+            completion(false, nil)
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let httpResponse = response as? HTTPURLResponse,
+                  httpResponse.statusCode == 200,
+                  let jsonData = data else {
+                completion(false, nil)
+                return
+            }
+
+            do {
+                if let jsonArray = try JSONSerialization.jsonObject(with: jsonData) as? [[String: Any]] {
+                    completion(true, jsonArray)
+                } else {
+                    completion(false, nil)
+                }
+            } catch {
+                completion(false, nil)
+            }
+        }.resume()
+    }
+    
     //Alex
     func getUserID(username: String) async throws {
-        guard let url = URL(string: "http://localhost:3000/users/getid/\(username)") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/getid/\(username)") else {
             print("URL inválida")
             return
         }

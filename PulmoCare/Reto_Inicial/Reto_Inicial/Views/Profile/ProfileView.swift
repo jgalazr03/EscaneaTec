@@ -30,7 +30,7 @@ struct ProfileView: View {
                             .padding(.vertical, 5)
                         
                         // Campo para el nombre de usuario
-                        TextField("Username", text: $username)
+                        TextField("Usuario", text: $username)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .disabled(true)
                             .padding(.horizontal, 345)
@@ -44,7 +44,7 @@ struct ProfileView: View {
                         
                         // Botón Cambiar Contraseña
                         NavigationLink(destination: ChangePasswordView(userId: userId)) {
-                            Text("Change Password")
+                            Text("Cambiar contraseña")
                                 .foregroundColor(.white)
                                 .padding()
                                 .cornerRadius(10)
@@ -55,7 +55,7 @@ struct ProfileView: View {
                         Button(action: {
                             // Implementar cierre de sesión
                         }) {
-                            Text("Sign out")
+                            Text("Cerrar sesión")
                                 .foregroundColor(.white)
                                 .padding()
                                 .cornerRadius(10)

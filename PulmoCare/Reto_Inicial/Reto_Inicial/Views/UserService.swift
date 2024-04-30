@@ -289,7 +289,4 @@ class UserService {
             print("Error: \(error.localizedDescription)")
         }
     }
-
-
-
 }

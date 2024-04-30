@@ -1,4 +1,6 @@
 const dbService = require('../config/db.js')
+const bcrypt = require('bcrypt');
+const saltRounds = 10; // Puedes ajustar según tus necesidades de seguridad
 
 module.exports = {
     getAllUsers: () => {
@@ -41,29 +43,34 @@ module.exports = {
         return dbService.querypromise(sql)
     },
 
-    registerUser: (body) => {
-        const { username, email, password } = body;
-        sql = `INSERT INTO usuarios(username, email, password)
-               VALUES('${username}', '${email}', '${password}')
-               RETURNING *`;
-
-        return dbService.querypromise(sql);
+    registerUser: async ({ username, email, password }) => {
+        try {
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            const sql = `INSERT INTO usuarios(username, email, password)
+                         VALUES('${username}', '${email}', '${hashedPassword}')
+                         RETURNING *`;
+            return await dbService.querypromise(sql);
+        } catch (err) {
+            throw new Error(`Error al registrar el usuario: ${err}`);
+        }
     },
 
     loginUser: async (login, password) => {
-        const sql = `SELECT id, username, email, password
-                     FROM usuarios
-                     WHERE username = '${login}' OR email = '${login}'`;
         try {
-            const user = await dbService.querypromise(sql);
-            if (user.length > 0 && user[0].password === password) {
-                return { id: user[0].id, username: user[0].username, email: user[0].email };
-
-            } else {
-                return null;
+            const sql = `SELECT id, username, email, password
+                         FROM usuarios
+                         WHERE username = '${login}' OR email = '${login}'`;
+            const users = await dbService.querypromise(sql);
+            if (users.length > 0) {
+                const user = users[0];
+                const match = await bcrypt.compare(password, user.password);
+                if (match) {
+                    return { id: user.id, username: user.username, email: user.email };
+                }
             }
+            return null;
         } catch (err) {
-            throw new Error(err);
+            throw new Error(`Error al iniciar sesión: ${err}`);
         }
     },
 
@@ -89,10 +96,14 @@ module.exports = {
         return dbService.querypromise(sql, [usuarioId]);
     },
 
-    changeUserPassword: (userId, password) => {
-        // Asume que 'newPassword' ya ha sido encriptada adecuadamente antes de llamar a este servicio
-        const sql = `UPDATE usuarios SET password = '${password}' WHERE id = ${userId} RETURNING *`;
-        return dbService.querypromise(sql);
+    changeUserPassword: async (userId, newPassword) => {
+        try {
+            const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+            const sql = `UPDATE usuarios SET password = '${hashedPassword}' WHERE id = ${userId} RETURNING *`;
+            return await dbService.querypromise(sql);
+        } catch (err) {
+            throw new Error(`Error al actualizar la contraseña: ${err}`);
+        }
     },
     
     getUserInfoById: async (userId) => {

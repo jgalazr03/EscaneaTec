@@ -90,7 +90,7 @@ struct PreguntasView: View {
                 .tint(Color(red: 86/255, green: 59/255, blue: 117/255))
                 .scaleEffect(1.0)
                 .disabled(answers.contains { $0.isEmpty })
-                
+                .padding(.bottom, 15)
                 Spacer()
             }
         }

@@ -16,42 +16,44 @@ struct MenuView: View {
         
         NavigationStack{
             
-            VStack{
+            VStack {
 
                 ZStack{
                     HStack {
                         Button {
-                            } label: {
-                                Text("PulmoCare")
+                        } label: {
+                            HStack(spacing: 0) {  // Establece el espaciado a 0 para evitar espacio entre las palabras
+                                Text("Pulmo")
                                     .font(.largeTitle)
-                                    .foregroundStyle(.white)
+                                    .foregroundColor(.white)
+                                Text("Care")
+                                    .font(.largeTitle)
+                                    .foregroundColor(Color(red: 86/255, green: 59/255, blue: 117/255))
                             }
-                            .buttonStyle(.borderedProminent)
-                            .scaleEffect(1.5)
-                            .frame(width: 310, height: 50)
-                            .padding()
-                }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .scaleEffect(1.5)
+                        .frame(width: 310, height: 50)  // Asegúrate de que el ancho es suficiente
+                        .padding(.top, 20)
+                    }
                                     
                     HStack{
                         Spacer()
                         
                         NavigationLink(destination: ProfileView()) {
                             Image(systemName: "person.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20)
+                                .font(.system(size: 34))
                         }
                         .buttonBorderShape(.circle)
-                        .scaleEffect(1.5)
                         .overlay(
                             Circle()
                                 .stroke(Color(red: 86/255, green: 59/255, blue: 117/255), lineWidth: 7)
                                 .frame(width: 70, height: 70)
                         )
                     }
-                    .padding(30)
+                    .padding(50)
                 }
-                
+                .padding(.bottom, 25)
                 Spacer()
                 
                 HStack{
@@ -63,16 +65,15 @@ struct MenuView: View {
                     }label: {
                         VStack{
                             Spacer()
-                            Image("menu2")
-                                .resizable()
-                                .frame(width: 190, height: 245)
-                                .cornerRadius(25)
-                            Text("Subir Imagen")
+                            Image(systemName: "square.and.arrow.up")
+                                .font(.system(size: 100))
+                            Text("Subir imagen")
                                 .padding()
                                 .font(.title)
+                                .multilineTextAlignment(.center)
                         }
                     }
-                    .frame(width: 215, height: 325)
+                    .frame(width: 300, height: 250)
                     .buttonBorderShape(.roundedRectangle(radius: 30.0))
                     
                     Spacer()
@@ -82,16 +83,14 @@ struct MenuView: View {
                     }label: {
                         VStack{
                             Spacer()
-                            Image("menu3")
-                                .resizable()
-                                .frame(width: 190, height: 245)
-                                .cornerRadius(25)
+                            Image(systemName: "books.vertical.fill")
+                                .font(.system(size: 100))
                             Text("Estudio")
                                 .padding()
                                 .font(.title)
                         }
                     }
-                    .frame(width: 215, height: 325)
+                    .frame(width: 250, height: 250)
                     .buttonBorderShape(.roundedRectangle(radius: 30.0))
                     
                     Spacer()
@@ -101,16 +100,14 @@ struct MenuView: View {
                     }label: {
                         VStack{
                             Spacer()
-                            Image("stats")
-                                .resizable()
-                                .frame(width: 190, height: 245)
-                                .cornerRadius(25)
+                            Image(systemName: "chart.bar.fill")
+                                .font(.system(size: 100))
                             Text("Estadísticas")
                                 .padding()
                                 .font(.title)
                         }
                     }
-                    .frame(width: 215, height: 325)
+                    .frame(width: 250, height: 250)
                     .buttonBorderShape(.roundedRectangle(radius: 30.0))
                     
                     Spacer()
@@ -126,21 +123,22 @@ struct MenuView: View {
                     Button{
                         open(id: "ChatBot")
                     }label: {
-                        Image("logoChat")
+                        Image("chatgpt-green")
                             .resizable()
+                            .scaledToFill()
+                            .scaledToFit()
                             .frame(width: 80, height: 80)
                     }
                     .buttonBorderShape(.circle)
                     .padding()
-                    .overlay(
-                        Circle()
-                            .stroke(Color(red: 86/255, green: 59/255, blue: 117/255), lineWidth: 7)
-                            .frame(width: 71, height: 71)
-                    )
-                    
+                    //.overlay(
+                        //Circle()
+                            //.stroke(Color(red: 86/255, green: 59/255, blue: 117/255), lineWidth: 7)
+                            //.frame(width: 71, height: 71)
+                    //)
+                    Spacer() // Este Spacer empuja el botón hacia la izquierda.
+                            .frame(width: 15) // Ajusta este valor para mover más o menos el botón hacia la izquierda.
                 }
-                
-                
             }
             
         }
@@ -159,6 +157,7 @@ struct MenuView: View {
         .padding(.bottom, 20)
     }
 }
+
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {

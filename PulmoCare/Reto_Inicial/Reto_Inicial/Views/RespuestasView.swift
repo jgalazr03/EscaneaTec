@@ -13,72 +13,71 @@ struct RespuestasView: View {
     let respuestas: [String]
     
     @EnvironmentObject var viewModel: CombinedViewModel
-    
     @State private var isLoading = true
-    
-    @State private var retroalimentacion: [(calif: Int, comentario: String)] = [(0, ""), (0, ""), (0, "")]
+    @State private var retroalimentacion: [(calif: Int, comentario: String)] = Array(repeating: (0, ""), count: 3)
     
     private let openAIService = OpenAIService()
     
     var body: some View {
-        
-        VStack {
-            
-            Spacer()
-            
-            ForEach(0..<preguntas.count, id: \.self) { index in
-                HStack {
-                    Spacer()
-                    VStack(alignment: .leading){
-                        Text(preguntas[index]) // Pregunta
-                            .font(.title2)
-                            .foregroundColor(Color(red: 86/255, green: 59/255, blue: 117/255))
-                        Text(respuestas[index]) // Respuesta
-                            .font(.title3)
-                    }
-                    .padding()
-                    Spacer()
-                    VStack{
-                        if isLoading {
-                            Spacer()
-                            ProgressView("Cargando retroalimentación...")
-                                .padding()
-                            Spacer()
-                        } else {
-                            Text("Calificación: \(retroalimentacion[index].calif)/10") // Calificación
-                                .fontWeight(.bold)
-                                .font(.title2)
-                                .foregroundColor(Color(red: 86/255, green: 59/255, blue: 117/255))
-                            Text("Comentario: \(retroalimentacion[index].comentario)") // Comentario
-                                .font(.title3)
-                        }
-                    }
-                    .padding()
-                    Spacer()
+        ScrollView {
+            VStack(spacing: 10) {
+                ForEach(Array(zip(preguntas.indices, preguntas)), id: \.0) { index, pregunta in
+                    preguntaRespuestaCard(index: index, pregunta: pregunta, respuesta: respuestas[index])
                 }
-                .background(Color.white.opacity(0.2)) // Fondo gris claro para cada bloque
-                .cornerRadius(15)
+                verDiagnosticoLink()
             }
-            
-            Spacer()
-            
-            NavigationLink(destination: AnotherView().environmentObject(viewModel)) {
-                Text("Ver Diagnóstico")
-                    .font(.title2)
-                    .foregroundColor(.white)
+            .padding()
+        }
+        .onAppear(perform: chatProfe)
+    }
+    
+    @ViewBuilder
+    private func preguntaRespuestaCard(index: Int, pregunta: String, respuesta: String) -> some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(pregunta)
+                    .font(.title2.bold())
+                    .foregroundColor(ThemeColors.purple)
+                Text(respuesta)
+                    .font(.title3)
             }
-            .buttonBorderShape(.roundedRectangle)
-            .tint(Color(red: 86/255, green: 59/255, blue: 117/255))
-            .cornerRadius(25)
-            
+            .padding()
             Spacer()
-            
+            retroalimentacionView(index: index)
+        }
+        .background(Color.white.opacity(0.2))
+        .cornerRadius(15)
+    }
+    
+    @ViewBuilder
+    private func retroalimentacionView(index: Int) -> some View {
+        VStack {
+            if isLoading {
+                ProgressView("Cargando retroalimentación...")
+                    .padding()
+            } else {
+                Text("Calificación: \(retroalimentacion[index].calif)/10")
+                    .font(.title2.bold())
+                    .foregroundColor(ThemeColors.purple)
+                Text("Comentario: \(retroalimentacion[index].comentario)")
+                    .font(.title3)
+                    .padding(.top, 5)
+            }
         }
         .padding()
-        .onAppear {
-            chatProfe()
+    }
+    
+    private func verDiagnosticoLink() -> some View {
+        NavigationLink(destination: AnotherView().environmentObject(viewModel)) {
+            Text("Ver Diagnósticos")
+                .font(.title2)
+                .foregroundColor(.white)
         }
-        
+        .buttonStyle(.borderedProminent)
+        .tint(ThemeColors.purple)
+        .cornerRadius(25)
+        .padding()
+        .padding(.top, 20)
     }
     
     func chatProfe() {
@@ -94,7 +93,7 @@ struct RespuestasView: View {
                 print("No se pudo recibir el mensaje")
                 return
             }
-
+            
             let components = receivedOpenAIMessage.content.components(separatedBy: "\n")
             print("Respuesta:", receivedOpenAIMessage.content)
             print("Components:", components)
@@ -102,7 +101,7 @@ struct RespuestasView: View {
                 print("Respuesta no válida recibida")
                 return
             }
-
+            
             DispatchQueue.main.async {
                 retroalimentacion[0] = (Int(components[0]) ?? 0, components[1])
                 retroalimentacion[1] = (Int(components[2]) ?? 0, components[3])
@@ -112,4 +111,7 @@ struct RespuestasView: View {
         }
     }
     
+    enum ThemeColors {
+        static let purple = Color(red: 86/255, green: 59/255, blue: 117/255)
+    }
 }

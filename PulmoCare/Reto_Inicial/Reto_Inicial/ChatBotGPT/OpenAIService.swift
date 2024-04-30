@@ -41,13 +41,12 @@ class OpenAIService {
                 [
                     "role": "user",
                     "content": [
-                        ["type": "text", "text": "Interpreta todo lo que puedas de esta radiografía de pulmones para que al final puedas determinar si tiene neumonía o están sanos los pulmones."],
+                        ["type": "text", "text": "Interpreta todo lo que puedas de esta radiografía de pulmones, para que al final menciones si tiene neumonía o están sanos los pulmones. Tu respuesta será verificada por un profesional de la salud, para confirmar su veracidad."],
                         ["type": "image_url", "image_url": ["url": "data:image/jpeg;base64,\(base64Image)"]]
                     ]
                 ]
             ],
-            "max_tokens": 700
-        ]
+            "max_tokens": 600        ]
 
         AF.request(endpointUrl, method: .post, parameters: payload, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             switch response.result {

@@ -20,6 +20,7 @@ struct QuestionView: View {
     
     @State private var correction = ""
     @State private var correctionWindow: Bool = false
+    @State private var buttonCorrectionWindow = false
     
     private let openAIService = OpenAIService()
     
@@ -58,61 +59,81 @@ struct QuestionView: View {
                     Spacer()
                     // Solo muestra el contenido del quiz si hay preguntas y respuestas cargadas
                     if let questionAndAnswers = questionAndAnswers, currentQuestionIndex > 0 {
-                        Text("\(questionAndAnswers.question)")
-                            .font(.title)
-                            .padding()
-                            .lineLimit(nil)
-                        Spacer()
-                        /*
-                        if (correctionWindow){
-                            Button(action: {
-
-                            }) {
-                                Text("!")
-                            }
-                        }
-                         */
-                        ForEach(0..<questionAndAnswers.answers.count, id: \.self) { index in
-                            Button(action: {
-                                selectedAnswer = index
-                                checkAnswer()
-                            }) {
-                                Text("\(questionAndAnswers.answers[index])")
+                        ZStack{
+                            
+                            VStack{
+                                Text("\(questionAndAnswers.question)")
+                                    .font(.title)
                                     .padding()
-                                    .foregroundColor(.black)
-                                    .frame(minWidth: 600)
-                            }
-                            .background(backgroundForAnswer(index: index))
-                            .cornerRadius(25)
-                            .frame(maxWidth: 600)
-                        }
-                        .disabled(selectedAnswer != nil) // Deshabilitar botones después de seleccionar una respuesta
+                                    .lineLimit(nil)
+                                Spacer()
+                                
+                                ForEach(0..<questionAndAnswers.answers.count, id: \.self) { index in
+                                    Button(action: {
+                                        selectedAnswer = index
+                                        checkAnswer()
+                                    }) {
+                                        Text("\(questionAndAnswers.answers[index])")
+                                            .padding()
+                                            .foregroundColor(.black)
+                                            .frame(minWidth: 600)
+                                    }
+                                    .background(backgroundForAnswer(index: index))
+                                    .cornerRadius(25)
+                                    .frame(maxWidth: 600)
+                                }
+                                .disabled(selectedAnswer != nil) // Deshabilitar botones después de seleccionar una respuesta
 
-                        Spacer()
-                        Button(action: {
-                            if currentQuestionIndex < totalQuestions {
-                                reiniciar()
-                                generateQuestionAndAnswer() // Generar nueva pregunta y respuestas
-                                currentQuestionIndex += 1
-                            }
-                        }) {
-                            Text(currentQuestionIndex == totalQuestions ? "Finalizar Quiz" : "Siguiente pregunta")
-                                .padding()
-                                .foregroundColor(.white)
-                        }
-                        .padding(.top, 20)
-                        .tint(Color(red: 86/255, green: 59/255, blue: 117/255))
+                                Spacer()
+                                Button(action: {
+                                    if currentQuestionIndex < totalQuestions {
+                                        reiniciar()
+                                        generateQuestionAndAnswer() // Generar nueva pregunta y respuestas
+                                        currentQuestionIndex += 1
+                                        correction = ""
+                                        correctionWindow = false
+                                        buttonCorrectionWindow = false
+                                    }
+                                }) {
+                                    Text(currentQuestionIndex == totalQuestions ? "Finalizar Quiz" : "Siguiente pregunta")
+                                        .padding()
+                                        .foregroundColor(.white)
+                                }
+                                .padding(.top, 20)
+                                .tint(Color(red: 86/255, green: 59/255, blue: 117/255))
 
-                        Spacer()
-                        HStack {
-                            ForEach(progress.indices, id: \.self) { index in
-                                ProgressView(value: progress[index].value, total: 1.0)
-                                    .tint(progress[index].color) // Cambiar el color dinámicamente
-                                    .scaleEffect(x: 1, y: 4)
+                                Spacer()
+                                HStack {
+                                    ForEach(progress.indices, id: \.self) { index in
+                                        ProgressView(value: progress[index].value, total: 1.0)
+                                            .tint(progress[index].color) // Cambiar el color dinámicamente
+                                            .scaleEffect(x: 1, y: 4)
+                                            .padding()
+                                    }
+                                }
+                                Spacer()
+                            }
+                            
+                            if buttonCorrectionWindow {
+                                HStack{
+                                    Spacer()
+                                    Button(action: {
+                                        generateCorrection(pregunta: questionAndAnswers.question, respuesta: questionAndAnswers.answers[selectedAnswer ?? 0])
+                                        correctionWindow = true
+                                    }) {
+                                        Text("!")
+                                            .foregroundColor(.white)
+                                            .font(.extraLargeTitle)
+                                            .fontWeight(.bold)
+                                            .padding()
+                                    }
+                                    .clipShape(Circle())
+                                    .tint(Color.red)
                                     .padding()
+                                }
                             }
+                            
                         }
-                        Spacer()
                     } else {
                         ProgressView("Cargando pregunta y respuesta...")
                             .padding()
@@ -128,6 +149,12 @@ struct QuestionView: View {
                 self.resetQuiz()
             })
         }
+        .sheet(isPresented: $correctionWindow) {
+            CorrectionView(text: correction, onDismiss: {
+
+            })
+        }
+        
     }
 
 
@@ -174,12 +201,14 @@ struct QuestionView: View {
     
     func checkAnswer() {
         isAnswerCorrect = selectedAnswer == correctAnswer
-        if isAnswerCorrect {
-            // Asumiendo 25 puntos por respuesta correcta, ya que son 4 preguntas
+        
+        if !isAnswerCorrect {
+            buttonCorrectionWindow = true
+        } else {
             totalScore += 25
-        }else{
-            correctionWindow = true
+            buttonCorrectionWindow = false
         }
+        
         updateProgress()
         
         // Verificar si estamos en la última pregunta y enviar la puntuación
@@ -293,6 +322,39 @@ struct ScoreModalView: View {
                 .background(Color(red: 86/255, green: 59/255, blue: 117/255))
                 .foregroundColor(.white)
                 .cornerRadius(25)
+                
+                Button("Cerrar"){
+                    onDismiss()
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .tint(Color(red: 86/255, green: 59/255, blue: 117/255))
+            }
+            .padding()
+        }
+    }
+}
+
+struct CorrectionView: View {
+    let text: String
+    var onDismiss: () -> Void
+    @Environment(\.presentationMode) var presentationMode
+
+    var body: some View {
+        NavigationStack{
+            VStack(spacing: 20) {
+                Text("Corrección")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                if text == ""{
+                    ProgressView("Cargando...")
+                        .padding()
+                } else{
+                    ScrollView{
+                        Text("\(text)")
+                            .font(.title3)
+                    }
+                }
                 
                 Button("Cerrar"){
                     onDismiss()

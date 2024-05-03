@@ -9,6 +9,12 @@ struct ModeloMLView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                
+                Text("Subir Imagen de la Radiografía")
+                    .font(.extraLargeTitle)
+                    .foregroundStyle(.white)
+                    .padding()
+                
                 Spacer()
                 
                 Button(action: {

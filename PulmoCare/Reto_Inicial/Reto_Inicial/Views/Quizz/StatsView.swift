@@ -18,7 +18,12 @@ struct StatsView: View {
     
     var body: some View {
         VStack {
-            Spacer(minLength: 20) // Espacio inicial
+            Spacer() // Espacio inicial
+            
+            Text("Progreso en Quizzes")
+                .font(.largeTitle)
+            
+            Spacer()
 
             // Primer HStack con los dos primeros bloques
             HStack {

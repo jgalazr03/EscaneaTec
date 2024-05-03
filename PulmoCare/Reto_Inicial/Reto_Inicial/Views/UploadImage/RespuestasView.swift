@@ -19,16 +19,27 @@ struct RespuestasView: View {
     private let openAIService = OpenAIService()
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                ForEach(Array(zip(preguntas.indices, preguntas)), id: \.0) { index, pregunta in
-                    preguntaRespuestaCard(index: index, pregunta: pregunta, respuesta: respuestas[index])
+        
+        VStack{
+            Text("Diagnóstico: Calificación de Respuestas")
+                .font(.largeTitle)
+            
+            Spacer()
+            
+            ScrollView {
+                VStack(spacing: 10) {
+                    ForEach(Array(zip(preguntas.indices, preguntas)), id: \.0) { index, pregunta in
+                        preguntaRespuestaCard(index: index, pregunta: pregunta, respuesta: respuestas[index])
+                    }
+                    verDiagnosticoLink()
                 }
-                verDiagnosticoLink()
+                .padding()
             }
-            .padding()
+            .onAppear(perform: chatProfe)
+            
+            Spacer()
         }
-        .onAppear(perform: chatProfe)
+        
     }
     
     @ViewBuilder

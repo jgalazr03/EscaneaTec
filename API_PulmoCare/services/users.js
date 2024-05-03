@@ -43,9 +43,9 @@ module.exports = {
         return dbService.querypromise(sql)
     },
 
-    registerUser: async ({ username, email, password }) => {
+    registerUser: async ({ username, email, decryptedPassword }) => {
         try {
-            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            const hashedPassword = await bcrypt.hash(decryptedPassword, saltRounds);
             const sql = `INSERT INTO usuarios(username, email, password)
                          VALUES('${username}', '${email}', '${hashedPassword}')
                          RETURNING *`;

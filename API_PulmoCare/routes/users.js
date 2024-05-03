@@ -32,4 +32,7 @@ router.get('/getid/:username', UserControllers.getId);
 //Obtener la info de Study
 router.get('/getstudy/enfermedades', UserControllers.getStudy);
 
+//Obtener la public Key
+router.get('/publickey/obtain', UserControllers.getPublicKey);
+
 module.exports = router;

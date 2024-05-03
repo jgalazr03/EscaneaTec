@@ -57,9 +57,9 @@ struct SignUpView: View {
                                         .padding(.horizontal, 40)
                                         .padding(.top, 10)
                                         .frame(width: 400)
-                                
-                    NavigationLink(destination: LogInView().onAppear {
-                        registerUser()
+                    
+                    Button(action: {
+                        registerUser() // Ejecutar la función de registro
                     }) {
                         Text("Sign Up")
                             .padding(.all)
@@ -79,17 +79,6 @@ struct SignUpView: View {
                 }
                 .background(Color(UIColor.systemBackground))
                 .edgesIgnoringSafeArea(.all)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarItems(leading:
-                 NavigationLink(destination: LogInView()) {
-                     Image(systemName: "arrow.left")
-                         .padding(.all)
-                         .background(Color(red: 86/255, green: 59/255, blue: 117/255))
-                         .cornerRadius(30)
-                         .ignoresSafeArea()
-                         .padding(-20)
-                         .foregroundColor(.white)
-                 })
             }
         }
     }
@@ -107,6 +96,7 @@ struct SignUpView: View {
                 if success {
                     self.alertTitle = "Registro Exitoso"
                     self.alertMessage = "El usuario ha sido registrado exitosamente."
+                    self.resetFields()
                 } else {
                     self.alertTitle = "Registro Fallido"
                     self.alertMessage = "Ha ocurrido un error al registrar el usuario."
@@ -114,6 +104,13 @@ struct SignUpView: View {
                 self.showingAlert = true
             }
         }
+    }
+    
+    func resetFields() {
+        self.username = ""
+        self.email = ""
+        self.password = ""
+        self.confirmPassword = ""
     }
 
 }

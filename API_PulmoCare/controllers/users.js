@@ -1,4 +1,17 @@
 const UserServices = require('../services/users.js')
+const forge = require('node-forge');
+
+function generateRSAKeyPair() {
+    const keypair = forge.pki.rsa.generateKeyPair({ bits: 2048 });
+    const privateKeyPEM = forge.pki.privateKeyToPem(keypair.privateKey);
+    const publicKeyPEM = forge.pki.publicKeyToPem(keypair.publicKey);
+    console.log("KEYS CREADAS");
+    return { privateKeyPEM, publicKeyPEM };
+}
+
+let { privateKeyPEM, publicKeyPEM } = generateRSAKeyPair();
+
+
 
 module.exports = {
     getAllUsers: async (req, res, next) => {
@@ -52,9 +65,16 @@ module.exports = {
 
     registerUser: async (req, res) => {
         try {
-            const { username, email, password } = req.body;
+            const { username, email, encryptedPassword } = req.body;
+
+            const privateKey = forge.pki.privateKeyFromPem(privateKeyPEM);
+            // console.log("CONTRA ENCRIPTADA", encryptedPassword);
+            const encryptedData = forge.util.decode64(encryptedPassword);
+            const decryptedPassword = privateKey.decrypt(encryptedData, 'RSA-OAEP');
+            // console.log("CONTRA DESENCRIPTADA", decryptedPassword);
+
             // Validar los parámetros y realizar el registro del usuario
-            const user = await UserServices.registerUser({ username, email, password });
+            const user = await UserServices.registerUser({ username, email, decryptedPassword});
             res.json({user})
         } catch (err) {
             res.json({"message": `Error al registrar el usuario. Err: ${err} `})
@@ -63,8 +83,14 @@ module.exports = {
 
     loginUser: async (req, res) => {
         try {
-            const { login, password } = req.body; // 'login' puede ser tanto username como email
-            const user = await UserServices.loginUser(login, password);
+            const { login, encryptedPassword } = req.body; // 'login' puede ser tanto username como email
+            const privateKey = forge.pki.privateKeyFromPem(privateKeyPEM);
+            // console.log("CONTRA ENCRIPTADA", encryptedPassword);
+            const encryptedData = forge.util.decode64(encryptedPassword);
+            const decryptedPassword = privateKey.decrypt(encryptedData, 'RSA-OAEP');
+            // console.log("CONTRA DESENCRIPTADA", decryptedPassword);
+
+            const user = await UserServices.loginUser(login, decryptedPassword);
             if (user) {
                 res.json({ user });
             } else {
@@ -113,14 +139,20 @@ module.exports = {
    
     changePassword: async (req, res) => {
         const userId = req.params.id;
-        const { password } = req.body; 
+        const { encryptedPassword } = req.body; 
     
-        if (!password) {
-            return res.status(400).json({"message": "Es necesario proporcionar la nueva contraseña."});
+        if (!encryptedPassword) {
+            return res.status(400).json({"message": "Es necesario proporcionar la nueva contraseña cifrada."});
         }
+        // console.log("CONTRA ENCRIPTADA", encryptedPassword);
     
         try {
-            await UserServices.changeUserPassword(userId, password);
+            const privateKey = forge.pki.privateKeyFromPem(privateKeyPEM);
+            const encryptedData = forge.util.decode64(encryptedPassword); // Decodificar desde Base64
+            const decryptedPassword = privateKey.decrypt(encryptedData, 'RSA-OAEP');
+            // console.log("CONTRA DESENCRIPTADA", decryptedPassword);
+
+            await UserServices.changeUserPassword(userId, decryptedPassword);
             res.status(200).json({"message": "Contraseña actualizada con éxito."});
         } catch (err) {
             console.error(err);
@@ -181,6 +213,17 @@ module.exports = {
             console.error(err);
             res.status(500).json({"message": `Error al recuperar la información de Study. Err: ${err}`});
         }
-    }
+    },
+
+    getPublicKey: (req, res) => {
+        try {
+            const { privateKeyPEM: newPrivateKey, publicKeyPEM: newPublicKey } = generateRSAKeyPair(); // Regenerar claves
+            privateKeyPEM = newPrivateKey;
+            publicKeyPEM = newPublicKey;
+            res.status(200).json({ publicKey: publicKeyPEM });
+        } catch (err) {
+            res.status(500).json({ "message": `Error al obtener la clave pública. Err: ${err}` });
+        }
+    },
 
 }

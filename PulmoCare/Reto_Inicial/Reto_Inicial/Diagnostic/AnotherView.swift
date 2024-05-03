@@ -32,7 +32,7 @@ struct AnotherView: View {
         Button(action: {
             // Acción del botón
         }) {
-            Text("Diagnósticos")
+            Text("Diagnósticos Finales")
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)

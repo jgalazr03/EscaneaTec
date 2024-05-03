@@ -16,7 +16,7 @@ class UserService {
     
     // Obtener llave pública del servidor para encriptar los datos sensibles
     func fetchPublicKey(completion: @escaping (String?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/publickey/obtain") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/publickey/obtain") else {
             completion(nil)
             return
         }
@@ -58,7 +58,7 @@ class UserService {
             print("CONTRA ENCRIPTADA")
             print(encryptedPassword.base64EncodedString())
             
-            guard let url = URL(string: "http://localhost:3000/users/login") else {
+            guard let url = URL(string: "http://159.54.129.113:3000/users/login") else {
                 completion(false)
                 return
             }
@@ -103,7 +103,7 @@ class UserService {
             print("CONTRA ENCRIPTADA")
             print(encryptedPassword.base64EncodedString())
             
-            guard let url = URL(string: "http://localhost:3000/users/register") else {
+            guard let url = URL(string: "http://159.54.129.113:3000/users/register") else {
                 completion(false)
                 return
             }
@@ -136,7 +136,7 @@ class UserService {
     }
 
     func addQuizPuntuation(userId: Int, score: Int, date: String, completion: @escaping (Bool) -> Void) {
-            guard let url = URL(string: "http://localhost:3000/users/quiz") else {
+            guard let url = URL(string: "http://159.54.129.113:3000/users/quiz") else {
                 completion(false)
                 return
             }
@@ -168,7 +168,7 @@ class UserService {
         }
         
     func getLastScores(userId: Int, completion: @escaping (Bool, [[String: Any]]?) -> Void) {
-        let urlString = "http://localhost:3000/users/lastscores/\(userId)"
+        let urlString = "http://159.54.129.113:3000/users/lastscores/\(userId)"
         guard let url = URL(string: urlString) else {
             completion(false, nil)
             return
@@ -212,7 +212,7 @@ class UserService {
                 print("CONTRA ENCRIPTADA")
                 print(encryptedPassword.base64EncodedString())
 
-                guard let url = URL(string: "http://localhost:3000/users/changepw/\(userId)") else {
+                guard let url = URL(string: "http://159.54.129.113:3000/users/changepw/\(userId)") else {
                     completion(false)
                     return
                 }
@@ -241,7 +241,7 @@ class UserService {
         }
     
     func getUserInfo(userId: String, completion: @escaping (Bool, [String: Any]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/userdata/\(userId)") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/userdata/\(userId)") else {
             completion(false, nil)
             return
         }
@@ -271,7 +271,7 @@ class UserService {
     }
 
     func getUserQuizzesInfo(userId: String, completion: @escaping (Bool, [String: Any]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/userquizzes/\(userId)") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/userquizzes/\(userId)") else {
             completion(false, nil)
             return
         }
@@ -302,7 +302,7 @@ class UserService {
     
     // STUDY
     func getStudyInfo(completion: @escaping (Bool, [[String: Any]]?) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/users/getstudy/enfermedades") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/getstudy/enfermedades") else {
             completion(false, nil)
             return
         }
@@ -333,7 +333,7 @@ class UserService {
     
     //Alex
     func getUserID(username: String) async throws {
-        guard let url = URL(string: "http://localhost:3000/users/getid/\(username)") else {
+        guard let url = URL(string: "http://159.54.129.113:3000/users/getid/\(username)") else {
             print("URL inválida")
             return
         }

@@ -1,5 +1,6 @@
 # ReadMe PulmoCare
-Pasos necesarios para ejecutar la API#
+
+## Pasos necesarios para ejecutar la API#
 
 ### 1. API PulmoCare
   La API que hace posible la conexión a la base de datos se encuentra como **'API_PulmoCare'** en este repositorio. Para ejecutarla es necesario descargar la carpeta y abrirla en el editor de código de su preferencia.

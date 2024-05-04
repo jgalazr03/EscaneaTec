@@ -1,27 +1,34 @@
-# ReadMe PulmoCare
+# PulmoCare ReadMe
 
-**!!!IMPORTANTE!!!
-EL PROYECTO CORRECTO ES EL QUE SE ENCUENTRA EN ramaFinal. EL MAIN SE ENCUENTRA VACÍO POR ERRORES CON EL HISTORIAL Y EL GIT GUARDIAN.**
+**Importante:**
+El código fuente correcto y actualizado se encuentra en la rama `ramaFinal`. La rama `main` está vacía debido a problemas con el historial y GitGuardian.
 
-### Pasos necesarios para ejecutar la aplicación
+## Cómo Ejecutar la Aplicación
 
 ### 1. API PulmoCare
-  La API de PulmoCare se encuentra en este repositorio pero no es necesario ejecutarla, ya que esta está subida en la instancia de Oracle. El código de la app envía los mensajes a esta instancia.
+La API de PulmoCare ya está desplegada y operativa en una instancia de Oracle Cloud, por lo que no es necesario ejecutarla localmente. El código de la aplicación envía peticiones directamente a esta instancia.
 
-### 2. API Servicio Chat GPT
-   Para hacer uso de la API del servicio Chat GPT el usuario solamente se debe asegurar de que la API Key esté correctamente definida en el scheme de la aplicación. Para confirmar esto abra la app **PulmoCare** en Xcode y haga click en la parte superior central de la pantalla en donde se muestra el nombre del proyecto (justo al lado de 'Apple Vision Pro'). Esto abrirá una lista de opciones, seleccione **'Edit Scheme'**. Se abrirá una pequeña ventana en donde se visualiza la API Key, la cual debe ser la especificada en el documento de Sprint 3. En caso de que la API Key no se encuentre o sea otra a la especificada en el documento, deberá cambiarla asegurandose de que tenga como nombre **'OPENAI_API_KEY'**. Por lo tanto, se debería tener lo siguiente: 
-- Name: `OPENAI_API_KEY`
-- Value: `<API KEY DEL DOCUMENTO SPRINT 3 (NO ES POSIBLE COLOCARLA EN ESTE README YA QUE ES UN DATO SECRETO)>`
-Una vez que se tenga correctamente la definida esta API Key, ya se podrá hacer uso de la aplicación y todas sus funcionalidades relacionadas al servicio de Chat GPT.
+### 2. API del Servicio Chat GPT
+Para utilizar la API de Chat GPT, asegúrate de que la clave API esté configurada correctamente en el esquema de la aplicación:
+- Abre la aplicación **PulmoCare** en Xcode.
+- Haz clic en el nombre del proyecto en la parte superior central de la pantalla, al lado de 'Apple Vision Pro', y selecciona **'Edit Scheme'**.
+- En la ventana que aparece, verifica que la clave API figure como sigue:
+  - Name: `OPENAI_API_KEY`
+  - Value: `<API KEY DEL DOCUMENTO SPRINT 3>` (Nota: La clave API es un dato sensible y no se incluye en este README).
 
-### Stack de PulmoCare
-- Aplicación **'PulmoCare'** para Vision Pro como proyecto de Xcode
-- API con la base de datos en `JavaScript`
-- Base de Datos en `PostgreSQL`
-- Lenguajes de Programación: `Swift` y `JavaScript`
-- API del servicio ChatGPT OpenAI
+Una vez configurada la clave API, la aplicación estará lista para usar todas las funcionalidades del servicio de Chat GPT.
 
-### Librerías usadas para seguridad
-Esta es información adicional, ya que las librerías ya están incluidas y por lo tanto no es necesario importarlas.
-En App Cliente: SwiftyRSA
-En API: node-forge y bcrypt
+## Stack Tecnológico
+
+- **Aplicación:** PulmoCare para Vision Pro (Proyecto de Xcode)
+- **API:** Escrita en JavaScript
+- **Base de Datos:** PostgreSQL
+- **Lenguajes de Programación:** Swift y JavaScript
+- **API Externa:** ChatGPT de OpenAI
+
+## Librerías de Seguridad
+Las siguientes librerías de seguridad están preinstaladas y configuradas:
+- **En la Aplicación Cliente:** SwiftyRSA
+- **En la API:** node-forge, bcrypt
+
+Estas librerías ya están incluidas en el proyecto, por lo que no es necesario instalarlas manualmente.
